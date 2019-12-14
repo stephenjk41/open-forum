@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<pre>\r\n        {{fromPage | json}}\r\n</pre>\r\n<h2>Edit Question</h2>\r\n<form [formGroup]=\"this.form\" class=\"normal-form\">\r\n    <!-- <input type=\"hidden\" formControlName=\"$key\"> -->\r\n    <mat-form-field style=\"width: 60%\">\r\n        <input formControlName=\"title\" [(ngModel)]=\"title\" matInput placeholder=\"Question Title\"\r\n            value=\"{{fromPage.title}}\">\r\n    </mat-form-field>\r\n    <br>\r\n    <mat-form-field style=\"width: 90%;\">\r\n        <textarea formControlName=\"body\" [(ngModel)]=\"body\" matInput placeholder=\"Question Body\"\r\n            value=\"{{fromPage.body}}\"></textarea>\r\n    </mat-form-field>\r\n    <br>\r\n    <button mat-raised-button color=\"primary\" type=\"submit\" (click)=\"onSubmit()\">Submit</button>\r\n    <br>\r\n\r\n</form>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <pre>\r\n        {{fromPage | json}}\r\n</pre> -->\r\n<h2>Edit Question</h2>\r\n<form [formGroup]=\"this.form\" class=\"normal-form\">\r\n    <!-- <input type=\"hidden\" formControlName=\"$key\"> -->\r\n    <mat-form-field style=\"width: 60%\">\r\n        <input formControlName=\"title\" [(ngModel)]=\"title\" matInput placeholder=\"Question Title\"\r\n            value=\"{{fromPage.title}}\">\r\n    </mat-form-field>\r\n    <br>\r\n    <mat-form-field style=\"width: 90%;\">\r\n        <textarea formControlName=\"body\" [(ngModel)]=\"body\" matInput placeholder=\"Question Body\"\r\n            value=\"{{fromPage.body}}\"></textarea>\r\n    </mat-form-field>\r\n    <br>\r\n    <button mat-raised-button color=\"primary\" type=\"submit\" (click)=\"onSubmit()\">Submit</button>\r\n    <br>\r\n\r\n</form>");
 
 /***/ }),
 
@@ -388,7 +388,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9hcHAuY29tcG9uZW50LmNzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -554,7 +554,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jb21wb25lbnRzL2xvZ2luLXJlZ2lzdGVyL2xvZ2luLXJlZ2lzdGVyLmNvbXBvbmVudC5jc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbG9naW4tcmVnaXN0ZXIvbG9naW4tcmVnaXN0ZXIuY29tcG9uZW50LmNzcyJ9 */");
 
 /***/ }),
 
@@ -605,7 +605,7 @@ LoginRegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".sidenav-container {\n  height: 100%;\n}\n\n.sidenav {\n  width: 200px;\n}\n\n.sidenav .mat-toolbar {\n  background: inherit;\n}\n\n.mat-toolbar.mat-primary {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n  z-index: 1;\n}\n\n.filler {\n  flex: 1 1 auto;\n}\n\n.gap {\n  margin-right: 10px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL2NvbXBvbmVudHMvbmF2L25hdi5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBWTtBQUNkOztBQUVBO0VBQ0UsWUFBWTtBQUNkOztBQUVBO0VBQ0UsbUJBQW1CO0FBQ3JCOztBQUVBO0VBQ0Usd0JBQWdCO0VBQWhCLGdCQUFnQjtFQUNoQixNQUFNO0VBQ04sVUFBVTtBQUNaOztBQUVBO0VBQ0UsY0FBYztBQUNoQjs7QUFDQTtFQUNFLGtCQUFrQjtBQUNwQiIsImZpbGUiOiIuLi9jb21wb25lbnRzL25hdi9uYXYuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zaWRlbmF2LWNvbnRhaW5lciB7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuLnNpZGVuYXYge1xuICB3aWR0aDogMjAwcHg7XG59XG5cbi5zaWRlbmF2IC5tYXQtdG9vbGJhciB7XG4gIGJhY2tncm91bmQ6IGluaGVyaXQ7XG59XG5cbi5tYXQtdG9vbGJhci5tYXQtcHJpbWFyeSB7XG4gIHBvc2l0aW9uOiBzdGlja3k7XG4gIHRvcDogMDtcbiAgei1pbmRleDogMTtcbn1cblxuLmZpbGxlciB7XG4gIGZsZXg6IDEgMSBhdXRvO1xufVxuLmdhcCB7XG4gIG1hcmdpbi1yaWdodDogMTBweDtcbn1cbiJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".sidenav-container {\n  height: 100%;\n}\n\n.sidenav {\n  width: 200px;\n}\n\n.sidenav .mat-toolbar {\n  background: inherit;\n}\n\n.mat-toolbar.mat-primary {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n  z-index: 1;\n}\n\n.filler {\n  flex: 1 1 auto;\n}\n\n.gap {\n  margin-right: 10px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9uYXYvbmF2LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxtQkFBbUI7QUFDckI7O0FBRUE7RUFDRSx3QkFBZ0I7RUFBaEIsZ0JBQWdCO0VBQ2hCLE1BQU07RUFDTixVQUFVO0FBQ1o7O0FBRUE7RUFDRSxjQUFjO0FBQ2hCOztBQUNBO0VBQ0Usa0JBQWtCO0FBQ3BCIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9uYXYvbmF2LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2lkZW5hdi1jb250YWluZXIge1xuICBoZWlnaHQ6IDEwMCU7XG59XG5cbi5zaWRlbmF2IHtcbiAgd2lkdGg6IDIwMHB4O1xufVxuXG4uc2lkZW5hdiAubWF0LXRvb2xiYXIge1xuICBiYWNrZ3JvdW5kOiBpbmhlcml0O1xufVxuXG4ubWF0LXRvb2xiYXIubWF0LXByaW1hcnkge1xuICBwb3NpdGlvbjogc3RpY2t5O1xuICB0b3A6IDA7XG4gIHotaW5kZXg6IDE7XG59XG5cbi5maWxsZXIge1xuICBmbGV4OiAxIDEgYXV0bztcbn1cbi5nYXAge1xuICBtYXJnaW4tcmlnaHQ6IDEwcHg7XG59XG4iXX0= */");
 
 /***/ }),
 
@@ -761,7 +761,7 @@ NewQuestionDialog = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jb21wb25lbnRzL3RyZW5kaW5nL3RyZW5kaW5nLmNvbXBvbmVudC5jc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdHJlbmRpbmcvdHJlbmRpbmcuY29tcG9uZW50LmNzcyJ9 */");
 
 /***/ }),
 
@@ -805,7 +805,7 @@ TrendingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jb21wb25lbnRzL3VzZXItZGFzaC91c2VyLWRhc2guY29tcG9uZW50LmNzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdXNlci1kYXNoL3VzZXItZGFzaC5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -908,12 +908,17 @@ let EditDialog = class EditDialog {
     }
     ngOnInit() { }
     setQuestionData() {
-        console.log(this.fromPage);
-        this.fromPage.title = this.form.controls.title.value;
-        this.fromPage.body = this.form.controls.body.value;
+        console.log(this.form);
+        if (this.form.controls.title.touched && !this.form.controls.title.pristine) {
+            this.fromPage.title = this.form.value.title;
+        }
+        if (this.form.controls.body.touched && !this.form.controls.body.pristine) {
+            this.fromPage.body = this.form.value.body;
+        }
     }
     onSubmit() {
         this.setQuestionData();
+        console.log(this.fromPage);
         this.dash.edit_question(this.questionId, this.fromPage);
         this.dialogRef.close();
     }
@@ -1278,7 +1283,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\steph\OneDrive\Desktop\forum-appv3\open-forum\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\open-forum\src\main.ts */"./src/main.ts");
 
 
 /***/ })
