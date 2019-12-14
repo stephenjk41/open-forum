@@ -47,10 +47,6 @@ export class AuthService {
       this.user.uid = user.uid;
       this.user.email = user.email;
     })
-
-
-
-
   }
 
   async googleSignin() {
@@ -61,6 +57,8 @@ export class AuthService {
 
   async signOut() {
     await this.afAuth.auth.signOut();
+    this.dashOpen = false;
+    this.user$ = null;
     return this.router.navigate(['/']);
   }
 

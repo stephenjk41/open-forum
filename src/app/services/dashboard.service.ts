@@ -6,6 +6,7 @@ import {
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Question } from './question.model';
 import { AuthService } from './auth.service';
+import { IUser } from './user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,18 +14,24 @@ import { AuthService } from './auth.service';
 export class DashboardService {
   questionsRef: AngularFirestoreCollection<Question[]> = null;
   questions$: any;
-  userId: any;
+  cUser: IUser = {
+    uid: "",
+    displayName: "",
+    email: ""
+  };
   constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private auth: AuthService) {
     this.auth.user$.subscribe(user => {
-      this.userId = user.uid;
+      this.cUser.uid = user.uid;
+      this.cUser.email = user.email;
+      this.cUser.displayName = user.displayName;
     })
   }
 
   getQuestionsList(): AngularFirestoreCollection<Question[]> {
     // console.log(this.userId)
     // if (!this.userId) return;
-    console.log(this.userId)
-    this.questionsRef = this.db.collection(`questions`, ref => ref.where('userId', '==', this.userId))
+
+    this.questionsRef = this.db.collection(`questions`, ref => ref.where('userId', '==', this.cUser.uid))
     this.questions$ = this.questionsRef.valueChanges({ idField: 'id' });
     this.questions$.subscribe(questions => {
       console.log(questions);

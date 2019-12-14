@@ -1,19 +1,24 @@
-<div>
-    <h1>{{this.user.displayName}}</h1>
-    <p>Email: {{this.user.email}}</p>
-</div>
-<mat-list role="list">
-    <mat-list-item role="listitem" *ngFor="let question of dash.questions$ | async">
-        <button mat-button [matMenuTriggerFor]="menu">
-            <mat-icon mat-list-icon>reorder</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="openEditDialog(question)">Edit</button>
-            <button mat-menu-item (click)="deleteQuestion(question.id)">Delete</button>
-        </mat-menu>
+<div *ngIf="auth.user$ | async as user; else main">
+    <div>
+        <h1>{{this.user.displayName}}</h1>
+        <p>Email: {{this.user.email}}</p>
+    </div>
+    <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let question of dash.questions$ | async">
+            <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon mat-list-icon>reorder</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="openEditDialog(question)">Edit</button>
+                <button mat-menu-item (click)="deleteQuestion(question.id)">Delete</button>
+            </mat-menu>
 
-        <mat-icon mat-list-icon>question_answer</mat-icon>
-        <h4 mat-line>{{question.title}}</h4>
-        <p mat-line>{{question.body}}</p>
-    </mat-list-item>
-</mat-list>
+            <mat-icon mat-list-icon>question_answer</mat-icon>
+            <h4 mat-line>{{question.title}}</h4>
+            <p mat-line>{{question.body}}</p>
+        </mat-list-item>
+    </mat-list>
+</div>
+<ng-template #main>
+    <app-trending></app-trending>
+</ng-template>
