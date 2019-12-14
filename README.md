@@ -1,6 +1,13 @@
+
+
 # OpenForum
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+IS218 Forum Project
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19. 
+
+## Node Dependancies
+
+Run `npm i` to get all node modules needed to build the application.
 
 ## Development server
 
