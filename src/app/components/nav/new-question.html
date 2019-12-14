@@ -1,0 +1,15 @@
+<h2>New Question</h2>
+<form [formGroup]="this.form" class="normal-form">
+    <!-- <input type="hidden" formControlName="$key"> -->
+    <mat-form-field style="width: 60%">
+        <input formControlName="title" [(ngModel)]="title" matInput placeholder="Question Title">
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 90%;">
+        <textarea formControlName="body" [(ngModel)]="body" matInput placeholder="Question Body"></textarea>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Post</button>
+    <br>
+
+</form>

@@ -1,0 +1,38 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <div *ngIf="auth.user$ | async as user; else login">
+        <a mat-list-item (click)="goHome()">Home</a>
+        <a mat-list-item (click)="openDashboardDialog()">Dashboard</a>
+        <a mat-list-item (click)="openNewQuestionDialog()">New Question</a>
+        <hr>
+        <a mat-list-item (click)="auth.signOut()">Sign Out</a>
+      </div>
+      <ng-template #login>
+        <a mat-list-item (click)="auth.googleSignin()">Login</a>
+      </ng-template>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span class="gap">Open Forum</span>
+      <span class="filler"></span>
+      <div *ngIf=" auth.user$ | async as user; else name">
+        <span style="margin: auto;">
+          {{user.displayName}}
+          <i class="material-icons " style="margin: auto;">account_circle</i>
+        </span>
+      </div>
+      <ng-template #name></ng-template>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div *ngIf="auth.dashOpen && auth.user$; else home">
+      <app-user-dash></app-user-dash>
+    </div>
+    <ng-template #home>
+      <h1>Most Recent Post Page</h1>
+    </ng-template>
+  </mat-sidenav-content>
+</mat-sidenav-container>

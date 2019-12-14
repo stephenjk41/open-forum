@@ -1,7 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
+# /dist
 /tmp
 /out-tsc
 # Only exists if Bazel was run
@@ -16,11 +16,11 @@ speed-measure-plugin*.json
 
 # IDEs and editors
 /.idea
-.project
+# .project
 .classpath
 .c9/
 *.launch
-.settings/
+# .settings/
 *.sublime-workspace
 
 # IDE - VSCode
