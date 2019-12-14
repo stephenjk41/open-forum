@@ -89,12 +89,18 @@ export class EditDialog implements OnInit {
     body: new FormControl(''),
   });
   setQuestionData() {
-    console.log(this.fromPage)
-    this.fromPage.title = this.form.controls.title.value;
-    this.fromPage.body = this.form.controls.body.value;
+    console.log(this.form);
+    if (this.form.controls.title.touched && !this.form.controls.title.pristine) {
+      this.fromPage.title = this.form.value.title;
+    }
+    if (this.form.controls.body.touched && !this.form.controls.body.pristine) {
+      this.fromPage.body = this.form.value.body;
+    }
+
   }
   onSubmit() {
     this.setQuestionData();
+    console.log(this.fromPage)
     this.dash.edit_question(this.questionId, this.fromPage);
     this.dialogRef.close();
   }
