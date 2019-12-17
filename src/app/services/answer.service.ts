@@ -29,6 +29,6 @@ export class AnswerService {
   }
 
   delete_answer(record) {
-    return this.db.collection(`answer`).doc(record.id).delete();
+    return this.db.collection(`answers`).doc(record.id).delete();
   }
 }

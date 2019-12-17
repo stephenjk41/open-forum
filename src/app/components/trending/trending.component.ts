@@ -6,6 +6,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Question, Answer } from 'src/app/services/question.model';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AnswerService } from 'src/app/services/answer.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class TrendingComponent implements OnInit {
   displayName: string;
   newAnswer: Answer;
   logQuestion: Question;
-  data_questions: any[];
+  data_questions: Observable<any[]>;
 
   constructor(public trending: TrendingService,
     public dash: DashboardService,
@@ -50,20 +51,11 @@ export class TrendingComponent implements OnInit {
     this.questions$.subscribe(questions => {
       this.answers$.subscribe(answers => {
         questions.forEach(question => {
-          let content = answers.find(a => {
-            if (a.qid != question.id) {
-              console.log('delted answer with title ' + a.title)
-              this.answerService.delete_answer(a.id);
-            } else {
-              console.log(a);
-              question.answers.push(a);
-              this.data_questions.push(question);
-              return true;
-            }
-          })
+          const result = answers.filter(answer => answer.qid === question.id);
+          question.answers = result;
         })
       })
-      console.log(this.data_questions)
+      console.log(questions)
     })
   }
 
