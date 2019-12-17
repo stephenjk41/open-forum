@@ -50,9 +50,8 @@ export class NavComponent implements OnInit {
   }
 
   openDashboardDialog(): void {
-    this.auth.dashOpen = !this.auth.dashOpen;
+    this.auth.dashOpen = true;
     console.log(this.auth.dashOpen)
-
   }
 }
 
@@ -79,6 +78,7 @@ export class NewQuestionDialog implements OnInit {
     author: "",
     time: "",
     userId: "",
+    answers: []
   }
 
   ngOnInit() {
@@ -110,6 +110,7 @@ export class NewQuestionDialog implements OnInit {
     this.newQuestion.time = String(Date.now());
     this.newQuestion.title = this.form.controls.title.value;
     this.newQuestion.body = this.form.controls.body.value;
+
   }
 
   onSubmit() {

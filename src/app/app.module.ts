@@ -8,8 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent, NewQuestionDialog } from './components/nav/nav.component';
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
 import { UserDashComponent, EditDialog } from './components/user-dash/user-dash.component';
-
-//Service
+import { TrendingComponent, ErrorComponent } from './components/trending/trending.component';
 
 
 //Material
@@ -27,6 +26,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 //Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -34,8 +34,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-import { TrendingComponent } from './components/trending/trending.component';
-import { DashboardService } from './services/dashboard.service';
+
+
+
+
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { DashboardService } from './services/dashboard.service';
     NavComponent,
     NewQuestionDialog,
     TrendingComponent,
-    EditDialog
+    EditDialog,
+    ErrorComponent
+
   ],
   imports: [
     BrowserModule,
@@ -70,13 +74,15 @@ import { DashboardService } from './services/dashboard.service';
     TextFieldModule,
     MatMenuModule,
     MatTableModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatGridListModule,
+
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [NewQuestionDialog, EditDialog]
+  entryComponents: [NewQuestionDialog, EditDialog, ErrorComponent]
 })
 export class AppModule { }

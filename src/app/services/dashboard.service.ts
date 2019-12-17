@@ -7,6 +7,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Question } from './question.model';
 import { AuthService } from './auth.service';
 import { IUser } from './user.model';
+import { switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +16,22 @@ import { IUser } from './user.model';
 export class DashboardService {
   questionsRef: AngularFirestoreCollection<Question[]> = null;
   questions$: any;
+  user$: any;
   cUser: IUser = {
     uid: "",
     displayName: "",
     email: ""
   };
   constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private auth: AuthService) {
+    this.user$ = this.afAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.db.doc<IUser>(`users/${user.uid}`).valueChanges();
+        } else {
+          return of(null);
+        }
+      })
+    )
     this.auth.user$.subscribe(user => {
       this.cUser.uid = user.uid;
       this.cUser.email = user.email;
@@ -49,7 +61,6 @@ export class DashboardService {
 
   edit_question(record_id: string, question: Question) {
     this.questionsRef.doc(record_id).update(question);
-
   }
 
 }

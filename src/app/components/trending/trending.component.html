@@ -1,1 +1,58 @@
 <h1>Trending Works</h1>
+<div>
+    <mat-accordion class="example-headers-align">
+        <mat-expansion-panel *ngFor="let question of this.questions$ | async">
+            <mat-expansion-panel-header class="right-aligned-header">
+                <mat-panel-title>
+                    {{question.title}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    <span>{{question.author}}</span>
+
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <hr>
+            <h3>{{question.body}}</h3>
+            <hr>
+            <p>Answer the question</p>
+            <mat-grid-list cols="2" rowHeight="4:1">
+                <mat-grid-tile>
+                    <form [formGroup]="this.form" class="normal-form" style="width: 100%">
+                        <!-- <input type="hidden" formControlName="$key"> -->
+                        <mat-form-field style="width: 100%">
+                            <input formControlName="answer" [(ngModel)]="answer" matInput placeholder="Answer">
+                        </mat-form-field>
+                        <br>
+                        <button mat-raised-button color="primary" type="submit"
+                            (click)="postAnswer(question)">Post</button>
+                    </form>
+                </mat-grid-tile>
+                <mat-grid-tile>
+
+                </mat-grid-tile>
+            </mat-grid-list>
+            <mat-list role="list">
+                <hr>
+                <mat-list-item role="listitem" *ngFor="let answer of question.answers">
+                    <span>{{answer.answer}} - {{answer.author}}</span>
+                    <button mat-button style="margin: 2px; float: right;" (click)="upvote(question, answer)">
+                        {{answer.upvote}}
+                        <mat-icon mat-list-icon>
+                            arrow_upward</mat-icon>
+                        <ng-template #noVote>
+                            <mat-icon mat-list-icon>arrow_upward</mat-icon>
+                        </ng-template>
+                    </button>
+                    <button mat-button style="margin: 2px; float:right" (click)="downvote(question, answer)">
+                        {{answer.downvote}}
+                        <mat-icon mat-list-icon>arrow_downward</mat-icon>
+                    </button>
+                </mat-list-item>
+                <hr>
+            </mat-list>
+            <hr>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

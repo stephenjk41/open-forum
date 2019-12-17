@@ -66,10 +66,12 @@ export class UserDashComponent implements OnInit {
 export class EditDialog implements OnInit {
   fromPage: Question;
   questionId: string;
+
   constructor(public dialogRef: MatDialogRef<EditDialog>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     public dash: DashboardService) {
     this.questionId = data.questionData.id
+
     this.fromPage = {
       uid: data.questionData.uid,
       title: data.questionData.title,
@@ -77,10 +79,10 @@ export class EditDialog implements OnInit {
       author: data.questionData.author,
       time: data.questionData.time,
       userId: data.questionData.userId,
+      answers: data.questionData.answers
 
     };
     console.log(this.fromPage)
-
   }
   ngOnInit() { }
 
@@ -96,7 +98,6 @@ export class EditDialog implements OnInit {
     if (this.form.controls.body.touched && !this.form.controls.body.pristine) {
       this.fromPage.body = this.form.value.body;
     }
-
   }
   onSubmit() {
     this.setQuestionData();

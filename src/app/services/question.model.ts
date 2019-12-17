@@ -1,3 +1,12 @@
+export interface Answer {
+    qid: string;
+    answer: string;
+    author: string;
+    upvote: number;
+    downvote: number;
+    upvotedUsers: string[];
+    downvotedUsers: string[];
+}
 export interface Question {
     uid: string;
     title: string;
@@ -5,4 +14,5 @@ export interface Question {
     author: string;
     time: string;
     userId: string;
+    answers: any[];
 }
