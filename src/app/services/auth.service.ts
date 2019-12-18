@@ -5,12 +5,10 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
-  AngularFirestoreDocument,
-  AngularFirestoreCollection
+  AngularFirestoreDocument
 } from '@angular/fire/firestore';
 
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { switchMap } from 'rxjs/operators';
 import { IUser } from './user.model';
 
@@ -22,7 +20,8 @@ import { IUser } from './user.model';
 export class AuthService {
   user$: Observable<any>;
   dashOpen = false;
-  user: IUser = {
+  loginOpen = false;
+  public user: IUser = {
     uid: "",
     email: "",
     displayName: ""
@@ -49,6 +48,28 @@ export class AuthService {
     })
   }
 
+  sendUserData(user) {
+    return this.user;
+  }
+
+  async login(email: string, password: string) {
+    var result = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+  }
+
+  async register(email: string, password: string) {
+    var result = await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+    this.sendEmailVerification();
+  }
+
+  async sendEmailVerification() {
+    await this.afAuth.auth.currentUser.sendEmailVerification()
+    this.router.navigate(['admin/verify-email']);
+  }
+
+  async sendPasswordResetEmail(passwordResetEmail: string) {
+    return await this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail);
+  }
+
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
@@ -70,7 +91,6 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
     };
-    console.log(user);
     return userRef.set(data, { merge: true });
   }
 

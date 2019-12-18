@@ -31,15 +31,19 @@ export class NavComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver,
     public auth: AuthService,
     public questionService: QuestionService,
-    public dialog: MatDialog, ) { }
+    public dialog: MatDialog, ) {
+    if (this.auth.user$) {
+      this.auth.user$.subscribe(user => {
+        this.userData.uid = user.uid;
+        this.userData.email = user.email;
+        this.userData.displayName = user.displayName;
+      })
+    }
+
+  }
+
   ngOnInit() {
-    this.auth.user$.subscribe(user => {
-      console.log(user);
-      this.userData.displayName = user.displayName;
-      this.userData.uid = user.uid;
-      this.userData.email = user.email;
-      console.log(this.userData)
-    })
+
   }
   openNewQuestionDialog(): void {
     const dialogRef = this.dialog.open(NewQuestionDialog, { width: "50%" });
@@ -47,13 +51,36 @@ export class NavComponent implements OnInit {
 
   goHome(): void {
     this.auth.dashOpen = false;
+    this.auth.loginOpen = false;
   }
 
-  openDashboardDialog(): void {
-    this.auth.dashOpen = !this.auth.dashOpen;
+  goDashboard(): void {
+    this.auth.dashOpen = true;
+    this.auth.loginOpen = false;
     console.log(this.auth.dashOpen)
-
   }
+  openLoginDialog() {
+    const dialogRef = this.dialog.open(LoginDialog, { width: "50%" });
+  }
+
+
+}
+
+@Component({
+  selector: 'login',
+  templateUrl: 'login.html'
+})
+
+export class LoginDialog implements OnInit {
+  constructor(public auth: AuthService,
+    public dialogRef: MatDialogRef<LoginDialog>) { }
+  ngOnInit() { }
+
+  gsignIn() {
+    this.auth.googleSignin()
+    this.dialogRef.close();
+  }
+
 }
 
 @Component({
@@ -72,22 +99,15 @@ export class NewQuestionDialog implements OnInit {
     displayName: ""
   };
 
-  newQuestion: Question = {
-    uid: "",
-    title: "",
-    body: "",
-    author: "",
-    time: "",
-    userId: "",
-  }
+  newQuestion: Question;
+
+
 
   ngOnInit() {
     this.auth.user$.subscribe(user => {
-      console.log(user);
       this.userData.displayName = user.displayName;
       this.userData.uid = user.uid;
       this.userData.email = user.email;
-      console.log(this.userData)
     })
 
   }
@@ -105,6 +125,7 @@ export class NewQuestionDialog implements OnInit {
   }
 
   setQuestionData() {
+    this.newQuestion = this.questionService.newQuestionTemplate(this.newQuestion);
     this.newQuestion.author = this.userData.displayName;
     this.newQuestion.userId = this.userData.uid;
     this.newQuestion.time = String(Date.now());

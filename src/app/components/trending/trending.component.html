@@ -1,1 +1,105 @@
-<h1>Trending Works</h1>
+
+<div>
+    
+    <mat-accordion class="example-headers-align">
+        <mat-expansion-panel *ngFor="let question of answerService.questions$ | async as questions; let i = index; last as isLast; first as isFirst"
+            [expanded]="step === i" (opened)="setStep(i)" hideToggle >
+                <mat-expansion-panel-header class="right-aligned-header" [ngStyle]="{'background-color':'lightgrey'}">
+                    <mat-panel-title>
+                        <strong>{{question.title}}</strong>
+                        
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <span>{{question.author}}</span>
+    
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+            
+            <hr>
+            <p>{{question.body}}</p>
+            <hr>
+            <mat-action-row>
+                
+                <ng-container *ngIf="didntPost(question); else alreadyPosted">
+                    <h4 style="margin: 2%;">Answer </h4>
+                    <form [formGroup]="this.form" class="normal-form" style="width: 100%">
+                        <mat-form-field style="width: 90%">
+                            <input formControlName="answer" [(ngModel)]="answer" matInput placeholder="Answer">
+                        </mat-form-field>
+                        <br>
+                        <button mat-raised-button color="primary" type="submit" (click)="postAnswer(question)"
+                            style="margin: 0; width: 20%;">Post</button>
+                    </form>
+                </ng-container>  
+                <ng-template #alreadyPosted>
+                    <p>You already posted an answer</p>
+                </ng-template>              
+                <ng-container *ngIf="isFirst && !isLast">
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </ng-container>
+
+                <ng-container *ngIf="isLast && !isFirst">
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                </ng-container>
+                <ng-container *ngIf="!isFirst && !isLast">
+                    <button mat-button color="warn" (click)="prevStep()">Previous</button>
+                    <button mat-button color="primary" (click)="nextStep()">Next</button>
+                </ng-container>
+                
+
+            </mat-action-row>
+            <mat-list role="list">
+                <mat-list-item role="listitem" *ngFor="let answer of question.answers">
+                    <mat-divider></mat-divider>
+                    <h3 matLine>{{answer.answer}}</h3>
+                    <p matLine>
+                        Posted by: {{answer.author}}
+                    </p>
+                    <p matLine>
+                        <ng-container *ngIf="voteDown(answer) && !voteUp(answer)">
+                            <button mat-button style="margin: 2px; float:right" (click)="downvote(answer)">
+                                {{answer.downvote}}
+                                <mat-icon mat-list-icon [ngStyle]="{'color':'orange'}">arrow_downward</mat-icon>
+                            </button>
+                            <button mat-button style="margin: 2px; float: right;" (click)="upvote(answer)">
+                                {{answer.upvote}}
+                                <mat-icon mat-list-icon>
+                                    arrow_upward</mat-icon>
+                                <ng-template #noVote>
+                                    <mat-icon mat-list-icon>arrow_upward</mat-icon>
+                                </ng-template>
+                            </button>
+                        </ng-container>
+
+                        <ng-container *ngIf="voteUp(answer) && !voteDown(answer)">
+                            <button mat-button style="margin: 2px; float:right" (click)="downvote(answer)">
+                                {{answer.downvote}}
+                                <mat-icon mat-list-icon>arrow_downward</mat-icon>
+                            </button>
+                            <button mat-button style="margin: 2px; float: right;" (click)="upvote(answer)">
+                                {{answer.upvote}}
+                                <mat-icon mat-list-icon [ngStyle]="{'color':'orange'}">
+                                    arrow_upward</mat-icon>
+                                
+                            </button>
+                        </ng-container>
+
+                        <ng-container *ngIf="!voteUp(answer) && !voteDown(answer)">
+                            <button mat-button style="margin: 2px; float:right" (click)="downvote(answer)">
+                                {{answer.downvote}}
+                                <mat-icon mat-list-icon>arrow_downward</mat-icon>
+                            </button>
+                            <button mat-button style="margin: 2px; float: right;" (click)="upvote(answer)">
+                                {{answer.upvote}}
+                                <mat-icon mat-list-icon>
+                                    arrow_upward</mat-icon>
+                             
+                            </button>
+                        </ng-container>
+                        
+                    </p>
+                </mat-list-item>
+            </mat-list>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

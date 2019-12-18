@@ -1,24 +1,36 @@
-<div *ngIf="auth.user$ | async as user; else main">
-    <div>
-        <h1>{{this.user.displayName}}</h1>
-        <p>Email: {{this.user.email}}</p>
-    </div>
-    <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let question of dash.questions$ | async">
-            <button mat-button [matMenuTriggerFor]="menu">
-                <mat-icon mat-list-icon>reorder</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="openEditDialog(question)">Edit</button>
-                <button mat-menu-item (click)="deleteQuestion(question.id)">Delete</button>
-            </mat-menu>
-
-            <mat-icon mat-list-icon>question_answer</mat-icon>
-            <h4 mat-line>{{question.title}}</h4>
-            <p mat-line>{{question.body}}</p>
-        </mat-list-item>
-    </mat-list>
+<div *ngIf="auth.user$ | async as user">
+    <mat-grid-list style="background: white;" cols="9" rowHeight="1.5:1">
+        <mat-grid-tile colspan="1">
+            <h1>{{user.displayName}}</h1>
+        </mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile colspan="2">
+            <button mat-raised-button color="primary" (click)="openEditProfile(dash.user$)">Edit Profile</button>
+        </mat-grid-tile>
+    </mat-grid-list>
 </div>
+<mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let question of dash.questions$ | async">
+        <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon mat-list-icon>reorder</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openEditDialog(question)">Edit</button>
+            <button mat-menu-item (click)="deleteQuestion(question.id)">Delete</button>
+            <button mat-menu-item (click)="viewMore(question)">More</button>
+        </mat-menu>
+
+        <mat-icon mat-list-icon>question_answer</mat-icon>
+        <h4 mat-line>{{question.title}}</h4>
+        <p mat-line>{{question.body}}</p>
+    </mat-list-item>
+</mat-list>
+
 <ng-template #main>
     <app-trending></app-trending>
 </ng-template>

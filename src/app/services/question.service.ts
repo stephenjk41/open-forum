@@ -31,7 +31,23 @@ export class QuestionService {
     })
   }
   create_NewQuestion(record: Question) {
-    return this.db.collection(`questions`).add(record);
+    return this.db.collection(`questions`).doc(record.qid).set(record);
   }
+
+  newQuestionTemplate(data: Question) {
+    data = {
+      uid: "",
+      title: "",
+      body: "",
+      qid: this.db.createId(),
+      author: "",
+      time: "",
+      userId: "",
+      answers: []
+    }
+    return data;
+  }
+
+
 
 }

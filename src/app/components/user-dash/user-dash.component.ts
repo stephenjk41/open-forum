@@ -20,7 +20,9 @@ export class UserDashComponent implements OnInit {
     public dash: DashboardService,
     public questionService: QuestionService,
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+
+  }
 
   dialogValue: Question;
   user: IUser = {
@@ -30,12 +32,7 @@ export class UserDashComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.questions = this.dash.getQuestionsList()
-    this.auth.user$.subscribe(user => {
-      this.user.displayName = user.displayName;
-      this.user.uid = user.uid;
-      this.user.email = user.email;
-    })
+    this.questions = this.dash.getQuestionsList(this.auth.user);
   }
 
   deleteQuestion(questionId: string) {
@@ -55,6 +52,28 @@ export class UserDashComponent implements OnInit {
     });
   }
 
+  openEditProfile(): void {
+    const dialogRef = this.dialog.open(EditProfile, {
+      width: "70%",
+    });
+  }
+
+}
+
+@Component({
+  selector: 'edit-profile',
+  templateUrl: 'edit-profile.html'
+})
+
+export class EditProfile implements OnInit {
+  constructor(public auth: AuthService) { }
+  ngOnInit() { }
+  form: FormGroup = new FormGroup({
+    displayName: new FormControl(''),
+    dob: new FormControl(''),
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+  });
 }
 
 @Component({
@@ -66,21 +85,23 @@ export class UserDashComponent implements OnInit {
 export class EditDialog implements OnInit {
   fromPage: Question;
   questionId: string;
+
   constructor(public dialogRef: MatDialogRef<EditDialog>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     public dash: DashboardService) {
+
     this.questionId = data.questionData.id
     this.fromPage = {
       uid: data.questionData.uid,
       title: data.questionData.title,
       body: data.questionData.body,
+      qid: data.questionData.qid,
       author: data.questionData.author,
       time: data.questionData.time,
       userId: data.questionData.userId,
-
+      answers: data.questionData.answers
     };
     console.log(this.fromPage)
-
   }
   ngOnInit() { }
 
@@ -96,7 +117,6 @@ export class EditDialog implements OnInit {
     if (this.form.controls.body.touched && !this.form.controls.body.pristine) {
       this.fromPage.body = this.form.value.body;
     }
-
   }
   onSubmit() {
     this.setQuestionData();
