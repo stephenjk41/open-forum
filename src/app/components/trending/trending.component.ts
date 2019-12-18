@@ -27,14 +27,19 @@ export class TrendingComponent implements OnInit {
 
   constructor(public trending: TrendingService,
     public dash: DashboardService,
-    private auth: AuthService,
+    public auth: AuthService,
     public answerService: AnswerService,
     public dialog: MatDialog) {
-    this.user$ = auth.getUserData().subscribe(user => {
-      this.userId = user.uid;
-      this.displayName = user.displayName;
-      console.log(this.displayName)
-    })
+    if (auth.user$) {
+      this.userId = auth.user.uid;
+      this.displayName = auth.user.displayName;
+      console.log(this.userId)
+    }
+    // this.user$ = auth.getUserData().subscribe(user => {
+    //   this.userId = user.uid;
+    //   this.displayName = user.displayName;
+    //   console.log(this.displayName)
+    // })
 
 
   }
@@ -58,8 +63,9 @@ export class TrendingComponent implements OnInit {
       this.newAnswer.downvotedUsers = [];
       this.trending.loginError = false;
       this.answerService.create_NewAnswer(this.newAnswer)
-    } else if (!this.auth.user$) {
+    } else if (!this.auth.signedIn) {
       this.trending.loginError = true;
+      console.log("sneaky test")
       const dialogRef = this.dialog.open(ErrorComponent, { width: "20%" });
     } else {
       const dialogRef = this.dialog.open(ErrorComponent, { width: "20%" });
@@ -70,45 +76,58 @@ export class TrendingComponent implements OnInit {
     var upAnswer = this.answerService.voteAnswerTemplate(answer);
     const containsUp = answer.upvotedUsers.some(user => user === this.userId)
     const containsDown = answer.downvotedUsers.some(user => user === this.userId)
-    if (!containsUp && !containsDown && (upAnswer.score <= 100 && upAnswer.score >= -100)) {
-      answer.upvotedUsers.push(this.userId)
-      upAnswer.upvote += 1;
-      upAnswer.score = (upAnswer.upvote - upAnswer.downvote);
-      this.answerService.edit_answer(upAnswer);
+    if (this.auth.signedIn) {
+      console.log("sneakier test")
+      if (!containsUp && !containsDown && (upAnswer.score <= 100 && upAnswer.score >= -100)) {
+        answer.upvotedUsers.push(this.userId)
+        upAnswer.upvote += 1;
+        upAnswer.score = (upAnswer.upvote - upAnswer.downvote);
+        this.answerService.edit_answer(upAnswer);
+      }
+      else if (!containsUp && containsDown && (upAnswer.score <= 100 && upAnswer.score >= -100)) {
+        const i = answer.downvotedUsers.indexOf(this.userId)
+        answer.downvotedUsers.splice(i, 1);
+        answer.upvotedUsers.push(this.userId)
+        upAnswer.upvote += 1;
+        upAnswer.downvote -= 1;
+        upAnswer.score = (upAnswer.upvote - upAnswer.downvote);
+        this.answerService.edit_answer(upAnswer);
+      }
+      else console.log("already voted up")
     }
-    else if (!containsUp && containsDown && (upAnswer.score <= 100 && upAnswer.score >= -100)) {
-      const i = answer.downvotedUsers.indexOf(this.userId)
-      answer.downvotedUsers.splice(i, 1);
-      answer.upvotedUsers.push(this.userId)
-      upAnswer.upvote += 1;
-      upAnswer.downvote -= 1;
-      upAnswer.score = (upAnswer.upvote - upAnswer.downvote);
-      this.answerService.edit_answer(upAnswer);
+    else {
+      const dialogRef = this.dialog.open(ErrorComponent, { width: "50%" });
     }
-    else console.log("already voted up")
+
   }
 
   downvote(answer: Answer) {
     var downAnswer = this.answerService.voteAnswerTemplate(answer);
     const containsUp = answer.upvotedUsers.some(user => user === this.userId)
     const containsDown = answer.downvotedUsers.some(user => user === this.userId)
-    if (!containsUp && !containsDown && (downAnswer.score <= 100 && downAnswer.score >= -100)) {
-      answer.downvotedUsers.push(this.userId)
-      downAnswer.downvote += 1;
-      downAnswer.score = (downAnswer.upvote - downAnswer.downvote);
-      this.answerService.edit_answer(downAnswer);
+    if (this.auth.signedIn) {
+      if (!containsUp && !containsDown && (downAnswer.score <= 100 && downAnswer.score >= -100)) {
+        answer.downvotedUsers.push(this.userId)
+        downAnswer.downvote += 1;
+        downAnswer.score = (downAnswer.upvote - downAnswer.downvote);
+        this.answerService.edit_answer(downAnswer);
+      }
+      else if (containsUp && !containsDown && (downAnswer.score <= 100 && downAnswer.score >= -100)) {
+        const i = answer.upvotedUsers.indexOf(this.userId)
+        answer.upvotedUsers.splice(i, 1);
+        answer.downvotedUsers.push(this.userId)
+        downAnswer.upvote -= 1;
+        downAnswer.downvote += 1;
+        downAnswer.score = (downAnswer.upvote - downAnswer.downvote);
+        this.answerService.edit_answer(downAnswer);
+      }
+      else console.log("already voted down")
+    } else {
+      const dialogRef = this.dialog.open(ErrorComponent, { width: "50%" });
     }
-    else if (containsUp && !containsDown && (downAnswer.score <= 100 && downAnswer.score >= -100)) {
-      const i = answer.upvotedUsers.indexOf(this.userId)
-      answer.upvotedUsers.splice(i, 1);
-      answer.downvotedUsers.push(this.userId)
-      downAnswer.upvote -= 1;
-      downAnswer.downvote += 1;
-      downAnswer.score = (downAnswer.upvote - downAnswer.downvote);
-      this.answerService.edit_answer(downAnswer);
-    }
-    else console.log("already voted down")
+
   }
+
   step = 0;
 
   setStep(index: number) {
@@ -125,24 +144,24 @@ export class TrendingComponent implements OnInit {
 
   didntPost(question) {
     var found = question.answers.some(answer => answer.author === this.displayName)
-    if(!found) 
+    if (!found)
       return true;
-    else 
+    else
       return false;
   }
 
   voteUp(answer) {
     var found = answer.upvotedUsers.some(uid => uid === this.userId);
-    if(found)
+    if (found)
       return true
     else
       return false
-    
+
   }
 
   voteDown(answer) {
     var found = answer.downvotedUsers.some(uid => uid === this.userId);
-    if(found)
+    if (found)
       return true
     else
       return false
@@ -157,7 +176,7 @@ export class TrendingComponent implements OnInit {
 
 export class ErrorComponent {
 
-  constructor(public trending: TrendingService) {
+  constructor(public auth: AuthService) {
 
   }
 }

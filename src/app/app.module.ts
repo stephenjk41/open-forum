@@ -27,6 +27,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
 
 //Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -78,6 +79,7 @@ import { environment } from '../environments/environment';
     MatTableModule,
     MatExpansionModule,
     MatGridListModule,
+    MatTabsModule
 
   ],
   providers: [

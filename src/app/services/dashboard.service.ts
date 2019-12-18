@@ -22,16 +22,17 @@ export class DashboardService {
     displayName: "",
     email: ""
   };
-  constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private auth: AuthService) {
+  constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, public auth: AuthService) {
+    console.log(this.auth.user$)
     if (this.auth.user$) {
-      this.auth.user$.subscribe(user => {
-        this.cUser.uid = user.uid;
-        this.cUser.email = user.email;
-        this.cUser.displayName = user.displayName;
-        console.log(this.auth.user)
-        this.questions$ = this.getQuestionsList(this.auth.user)
-      })
-
+      this.questions$ = this.getQuestionsList(this.auth.user)
+      // this.auth.user$.subscribe(user => {
+      // this.cUser.uid = user.uid;
+      // this.cUser.email = user.email;
+      // this.cUser.displayName = user.displayName;
+      // console.log(this.auth.user)
+      // this.questions$ = this.getQuestionsList(this.auth.user)
+      // })
     }
   }
 

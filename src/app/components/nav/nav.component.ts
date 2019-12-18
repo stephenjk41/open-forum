@@ -33,11 +33,12 @@ export class NavComponent implements OnInit {
     public questionService: QuestionService,
     public dialog: MatDialog, ) {
     if (this.auth.user$) {
-      this.auth.user$.subscribe(user => {
-        this.userData.uid = user.uid;
-        this.userData.email = user.email;
-        this.userData.displayName = user.displayName;
-      })
+      this.userData = this.auth.user;
+      // this.auth.user$.subscribe(user => {
+      //   this.userData.uid = user.uid;
+      //   this.userData.email = user.email;
+      //   this.userData.displayName = user.displayName;
+      // })
     }
 
   }

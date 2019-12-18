@@ -21,6 +21,8 @@ export class AuthService {
   user$: Observable<any>;
   dashOpen = false;
   loginOpen = false;
+  public signedIn = false;
+
   public user: IUser = {
     uid: "",
     email: "",
@@ -34,18 +36,21 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
+          this.signedIn = true;
+          this.user$.subscribe(user => {
+            this.user.displayName = user.displayName;
+            this.user.uid = user.uid;
+            this.user.email = user.email;
+          })
           return this.afs.doc<IUser>(`users/${user.uid}`).valueChanges();
         } else {
+          this.signedIn = false;
           return of(null);
         }
       })
     )
 
-    this.user$.subscribe(user => {
-      this.user.displayName = user.displayName;
-      this.user.uid = user.uid;
-      this.user.email = user.email;
-    })
+
   }
 
   sendUserData(user) {
