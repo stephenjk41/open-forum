@@ -23,27 +23,23 @@ export class DashboardService {
     email: ""
   };
   constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private auth: AuthService) {
-    this.user$ = this.afAuth.authState.pipe(
-      switchMap(user => {
-        if (user) {
-          return this.db.doc<IUser>(`users/${user.uid}`).valueChanges();
-        } else {
-          return of(null);
-        }
+    if (this.auth.user$) {
+      this.auth.user$.subscribe(user => {
+        this.cUser.uid = user.uid;
+        this.cUser.email = user.email;
+        this.cUser.displayName = user.displayName;
+        console.log(this.auth.user)
+        this.questions$ = this.getQuestionsList(this.auth.user)
       })
-    )
-    this.auth.user$.subscribe(user => {
-      this.cUser.uid = user.uid;
-      this.cUser.email = user.email;
-      this.cUser.displayName = user.displayName;
-    })
+
+    }
   }
 
-  getQuestionsList(): AngularFirestoreCollection<Question[]> {
+  getQuestionsList(user: IUser): AngularFirestoreCollection<Question[]> {
     // console.log(this.userId)
     // if (!this.userId) return;
 
-    this.questionsRef = this.db.collection(`questions`, ref => ref.where('userId', '==', this.cUser.uid))
+    this.questionsRef = this.db.collection(`questions`, ref => ref.where('userId', '==', user.uid))
     this.questions$ = this.questionsRef.valueChanges({ idField: 'id' });
     this.questions$.subscribe(questions => {
       console.log(questions);

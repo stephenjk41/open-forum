@@ -6,9 +6,12 @@ export interface Answer {
     downvote: number;
     upvotedUsers: string[];
     downvotedUsers: string[];
+    aid: string;
+    score: number;
 }
 export interface Question {
     uid: string;
+    qid: string;
     title: string;
     body: string;
     author: string;

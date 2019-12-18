@@ -13,11 +13,14 @@ export class TrendingService {
   questionsRef: AngularFirestoreCollection<Question[]> = null;
   answerRef: AngularFirestoreCollection<Answer[]> = null;
   questions$: any;
+  public loginError: boolean = false;
+
   cUser: IUser = {
     uid: "",
     displayName: "",
     email: ""
   };
+
   constructor(private db: AngularFirestore) {
   }
 

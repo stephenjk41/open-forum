@@ -5,9 +5,9 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Components
-import { NavComponent, NewQuestionDialog } from './components/nav/nav.component';
+import { NavComponent, NewQuestionDialog, LoginDialog } from './components/nav/nav.component';
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
-import { UserDashComponent, EditDialog } from './components/user-dash/user-dash.component';
+import { UserDashComponent, EditDialog, EditProfile } from './components/user-dash/user-dash.component';
 import { TrendingComponent, ErrorComponent } from './components/trending/trending.component';
 
 
@@ -49,7 +49,9 @@ import { environment } from '../environments/environment';
     NewQuestionDialog,
     TrendingComponent,
     EditDialog,
-    ErrorComponent
+    ErrorComponent,
+    EditProfile,
+    LoginDialog
 
   ],
   imports: [
@@ -83,6 +85,6 @@ import { environment } from '../environments/environment';
     { provide: MatDialogRef, useValue: {} }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [NewQuestionDialog, EditDialog, ErrorComponent]
+  entryComponents: [NewQuestionDialog, EditDialog, ErrorComponent, EditProfile, LoginDialog]
 })
 export class AppModule { }

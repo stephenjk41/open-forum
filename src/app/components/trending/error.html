@@ -1,1 +1,5 @@
-<h1 style="color: red;">You must login to vote</h1>
+<h1 style="color: red;" *ngIf="trending.logginError | async; else oops">You must login to vote</h1>
+
+<ng-template #opps>
+    <h1 style="color: red;"> Oops Something went wrong try again later</h1>
+</ng-template>
