@@ -873,26 +873,33 @@ var __values = (this && this.__values) || function (o) {
             /* harmony import */ var src_app_services_answer_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/answer.service */ "./src/app/services/answer.service.ts");
             var TrendingComponent = /** @class */ (function () {
                 function TrendingComponent(trending, dash, auth, answerService, dialog) {
+                    var _this = this;
                     this.trending = trending;
                     this.dash = dash;
                     this.auth = auth;
                     this.answerService = answerService;
                     this.dialog = dialog;
+                    this.user = {
+                        displayName: '',
+                        uid: '',
+                        email: ''
+                    };
                     this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
                         answer: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
                     });
                     this.step = 0;
-                }
-                TrendingComponent.prototype.ngOnInit = function () {
-                    this.trending.questions$.subscribe(function (question) {
-                        console.log(question);
+                    this.auth.user$.subscribe(function (user) {
+                        _this.user.displayName = user.displayName;
+                        _this.user.uid = user.uid;
+                        _this.user.email = user.email;
                     });
-                };
+                }
+                TrendingComponent.prototype.ngOnInit = function () { };
                 TrendingComponent.prototype.postAnswer = function (question) {
                     if (this.form.controls.answer.touched && !this.form.controls.answer.pristine) {
                         this.newAnswer = this.answerService.newAnswerTemplate(question);
                         this.newAnswer.answer = this.form.value.answer;
-                        this.newAnswer.author = this.displayName;
+                        this.newAnswer.author = this.user.displayName;
                         this.newAnswer.upvotedUsers = [];
                         this.newAnswer.downvotedUsers = [];
                         this.trending.loginError = false;
@@ -909,21 +916,22 @@ var __values = (this && this.__values) || function (o) {
                 };
                 TrendingComponent.prototype.upvote = function (answer) {
                     var _this = this;
+                    console.log(this.user);
                     var upAnswer = this.answerService.voteAnswerTemplate(answer);
-                    var containsUp = answer.upvotedUsers.some(function (user) { return user === _this.userId; });
-                    var containsDown = answer.downvotedUsers.some(function (user) { return user === _this.userId; });
+                    var containsUp = answer.upvotedUsers.some(function (user) { return user === _this.user.uid; });
+                    var containsDown = answer.downvotedUsers.some(function (user) { return user === _this.user.uid; });
                     if (this.auth.signedIn) {
                         console.log("sneakier test");
                         if (!containsUp && !containsDown && (upAnswer.score <= 100 && upAnswer.score >= -100)) {
-                            answer.upvotedUsers.push(this.userId);
+                            answer.upvotedUsers.push(this.user.uid);
                             upAnswer.upvote += 1;
                             upAnswer.score = (upAnswer.upvote - upAnswer.downvote);
                             this.answerService.edit_answer(upAnswer);
                         }
                         else if (!containsUp && containsDown && (upAnswer.score <= 100 && upAnswer.score >= -100)) {
-                            var i = answer.downvotedUsers.indexOf(this.userId);
+                            var i = answer.downvotedUsers.indexOf(this.user.uid);
                             answer.downvotedUsers.splice(i, 1);
-                            answer.upvotedUsers.push(this.userId);
+                            answer.upvotedUsers.push(this.user.uid);
                             upAnswer.upvote += 1;
                             upAnswer.downvote -= 1;
                             upAnswer.score = (upAnswer.upvote - upAnswer.downvote);
@@ -939,19 +947,19 @@ var __values = (this && this.__values) || function (o) {
                 TrendingComponent.prototype.downvote = function (answer) {
                     var _this = this;
                     var downAnswer = this.answerService.voteAnswerTemplate(answer);
-                    var containsUp = answer.upvotedUsers.some(function (user) { return user === _this.userId; });
-                    var containsDown = answer.downvotedUsers.some(function (user) { return user === _this.userId; });
+                    var containsUp = answer.upvotedUsers.some(function (user) { return user === _this.user.uid; });
+                    var containsDown = answer.downvotedUsers.some(function (user) { return user === _this.user.uid; });
                     if (this.auth.signedIn) {
                         if (!containsUp && !containsDown && (downAnswer.score <= 100 && downAnswer.score >= -100)) {
-                            answer.downvotedUsers.push(this.userId);
+                            answer.downvotedUsers.push(this.user.uid);
                             downAnswer.downvote += 1;
                             downAnswer.score = (downAnswer.upvote - downAnswer.downvote);
                             this.answerService.edit_answer(downAnswer);
                         }
                         else if (containsUp && !containsDown && (downAnswer.score <= 100 && downAnswer.score >= -100)) {
-                            var i = answer.upvotedUsers.indexOf(this.userId);
+                            var i = answer.upvotedUsers.indexOf(this.user.uid);
                             answer.upvotedUsers.splice(i, 1);
-                            answer.downvotedUsers.push(this.userId);
+                            answer.downvotedUsers.push(this.user.uid);
                             downAnswer.upvote -= 1;
                             downAnswer.downvote += 1;
                             downAnswer.score = (downAnswer.upvote - downAnswer.downvote);
@@ -975,7 +983,7 @@ var __values = (this && this.__values) || function (o) {
                 };
                 TrendingComponent.prototype.didntPost = function (question) {
                     var _this = this;
-                    var found = question.answers.some(function (answer) { return answer.author === _this.displayName; });
+                    var found = question.answers.some(function (answer) { return answer.author === _this.user.displayName; });
                     if (!found)
                         return true;
                     else
@@ -983,7 +991,7 @@ var __values = (this && this.__values) || function (o) {
                 };
                 TrendingComponent.prototype.voteUp = function (answer) {
                     var _this = this;
-                    var found = answer.upvotedUsers.some(function (uid) { return uid === _this.userId; });
+                    var found = answer.upvotedUsers.some(function (uid) { return uid === _this.user.uid; });
                     if (found)
                         return true;
                     else
@@ -991,7 +999,7 @@ var __values = (this && this.__values) || function (o) {
                 };
                 TrendingComponent.prototype.voteDown = function (answer) {
                     var _this = this;
-                    var found = answer.downvotedUsers.some(function (uid) { return uid === _this.userId; });
+                    var found = answer.downvotedUsers.some(function (uid) { return uid === _this.user.uid; });
                     if (found)
                         return true;
                     else
@@ -1427,7 +1435,7 @@ var __values = (this && this.__values) || function (o) {
                     };
                     this.user$ = this.afAuth.authState.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["switchMap"])(function (user) {
                         if (user) {
-                            // this.signedIn = true;
+                            _this.signedIn = true;
                             // this.user$.subscribe(user => {
                             //   this.user.displayName = user.displayName;
                             //   this.user.uid = user.uid;

@@ -875,21 +875,27 @@ let TrendingComponent = class TrendingComponent {
         this.auth = auth;
         this.answerService = answerService;
         this.dialog = dialog;
+        this.user = {
+            displayName: '',
+            uid: '',
+            email: ''
+        };
         this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
             answer: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
         });
         this.step = 0;
-    }
-    ngOnInit() {
-        this.trending.questions$.subscribe(question => {
-            console.log(question);
+        this.auth.user$.subscribe(user => {
+            this.user.displayName = user.displayName;
+            this.user.uid = user.uid;
+            this.user.email = user.email;
         });
     }
+    ngOnInit() { }
     postAnswer(question) {
         if (this.form.controls.answer.touched && !this.form.controls.answer.pristine) {
             this.newAnswer = this.answerService.newAnswerTemplate(question);
             this.newAnswer.answer = this.form.value.answer;
-            this.newAnswer.author = this.displayName;
+            this.newAnswer.author = this.user.displayName;
             this.newAnswer.upvotedUsers = [];
             this.newAnswer.downvotedUsers = [];
             this.trending.loginError = false;
@@ -905,21 +911,22 @@ let TrendingComponent = class TrendingComponent {
         }
     }
     upvote(answer) {
+        console.log(this.user);
         var upAnswer = this.answerService.voteAnswerTemplate(answer);
-        const containsUp = answer.upvotedUsers.some(user => user === this.userId);
-        const containsDown = answer.downvotedUsers.some(user => user === this.userId);
+        const containsUp = answer.upvotedUsers.some(user => user === this.user.uid);
+        const containsDown = answer.downvotedUsers.some(user => user === this.user.uid);
         if (this.auth.signedIn) {
             console.log("sneakier test");
             if (!containsUp && !containsDown && (upAnswer.score <= 100 && upAnswer.score >= -100)) {
-                answer.upvotedUsers.push(this.userId);
+                answer.upvotedUsers.push(this.user.uid);
                 upAnswer.upvote += 1;
                 upAnswer.score = (upAnswer.upvote - upAnswer.downvote);
                 this.answerService.edit_answer(upAnswer);
             }
             else if (!containsUp && containsDown && (upAnswer.score <= 100 && upAnswer.score >= -100)) {
-                const i = answer.downvotedUsers.indexOf(this.userId);
+                const i = answer.downvotedUsers.indexOf(this.user.uid);
                 answer.downvotedUsers.splice(i, 1);
-                answer.upvotedUsers.push(this.userId);
+                answer.upvotedUsers.push(this.user.uid);
                 upAnswer.upvote += 1;
                 upAnswer.downvote -= 1;
                 upAnswer.score = (upAnswer.upvote - upAnswer.downvote);
@@ -934,19 +941,19 @@ let TrendingComponent = class TrendingComponent {
     }
     downvote(answer) {
         var downAnswer = this.answerService.voteAnswerTemplate(answer);
-        const containsUp = answer.upvotedUsers.some(user => user === this.userId);
-        const containsDown = answer.downvotedUsers.some(user => user === this.userId);
+        const containsUp = answer.upvotedUsers.some(user => user === this.user.uid);
+        const containsDown = answer.downvotedUsers.some(user => user === this.user.uid);
         if (this.auth.signedIn) {
             if (!containsUp && !containsDown && (downAnswer.score <= 100 && downAnswer.score >= -100)) {
-                answer.downvotedUsers.push(this.userId);
+                answer.downvotedUsers.push(this.user.uid);
                 downAnswer.downvote += 1;
                 downAnswer.score = (downAnswer.upvote - downAnswer.downvote);
                 this.answerService.edit_answer(downAnswer);
             }
             else if (containsUp && !containsDown && (downAnswer.score <= 100 && downAnswer.score >= -100)) {
-                const i = answer.upvotedUsers.indexOf(this.userId);
+                const i = answer.upvotedUsers.indexOf(this.user.uid);
                 answer.upvotedUsers.splice(i, 1);
-                answer.downvotedUsers.push(this.userId);
+                answer.downvotedUsers.push(this.user.uid);
                 downAnswer.upvote -= 1;
                 downAnswer.downvote += 1;
                 downAnswer.score = (downAnswer.upvote - downAnswer.downvote);
@@ -969,21 +976,21 @@ let TrendingComponent = class TrendingComponent {
         this.step--;
     }
     didntPost(question) {
-        var found = question.answers.some(answer => answer.author === this.displayName);
+        var found = question.answers.some(answer => answer.author === this.user.displayName);
         if (!found)
             return true;
         else
             return false;
     }
     voteUp(answer) {
-        var found = answer.upvotedUsers.some(uid => uid === this.userId);
+        var found = answer.upvotedUsers.some(uid => uid === this.user.uid);
         if (found)
             return true;
         else
             return false;
     }
     voteDown(answer) {
-        var found = answer.downvotedUsers.some(uid => uid === this.userId);
+        var found = answer.downvotedUsers.some(uid => uid === this.user.uid);
         if (found)
             return true;
         else
@@ -1456,7 +1463,7 @@ let AuthService = class AuthService {
         };
         this.user$ = this.afAuth.authState.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["switchMap"])(user => {
             if (user) {
-                // this.signedIn = true;
+                this.signedIn = true;
                 // this.user$.subscribe(user => {
                 //   this.user.displayName = user.displayName;
                 //   this.user.uid = user.uid;

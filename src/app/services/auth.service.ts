@@ -36,7 +36,7 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          // this.signedIn = true;
+          this.signedIn = true;
           // this.user$.subscribe(user => {
           //   this.user.displayName = user.displayName;
           //   this.user.uid = user.uid;
