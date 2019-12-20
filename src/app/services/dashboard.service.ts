@@ -7,8 +7,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Question } from './question.model';
 import { AuthService } from './auth.service';
 import { IUser } from './user.model';
-import { switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { switchMap, shareReplay } from 'rxjs/operators';
+import { of, Observable } from 'rxjs';
+import { leftJoin } from './collectionJoin';
 
 @Injectable({
   providedIn: 'root'
@@ -16,35 +17,34 @@ import { of } from 'rxjs';
 export class DashboardService {
   questionsRef: AngularFirestoreCollection<Question[]> = null;
   questions$: any;
-  user$: any;
-  cUser: IUser = {
+  user$: Observable<any>;
+  userId: string;
+  user: IUser = {
     uid: "",
     displayName: "",
     email: ""
   };
   constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, public auth: AuthService) {
-    console.log(this.auth.user$)
-    if (this.auth.user$) {
-      this.questions$ = this.getQuestionsList(this.auth.user)
-      // this.auth.user$.subscribe(user => {
-      // this.cUser.uid = user.uid;
-      // this.cUser.email = user.email;
-      // this.cUser.displayName = user.displayName;
-      // console.log(this.auth.user)
-      // this.questions$ = this.getQuestionsList(this.auth.user)
-      // })
-    }
+    this.auth.user$.subscribe(user => {
+      this.userId = user.uid
+      console.log(this.userId)
+      this.questions$ = this.db
+        .collection('questions', ref => ref.where('userId', '==', this.userId))
+        .valueChanges({ idField: 'id' })
+        .pipe(
+          leftJoin(this.db, 'qid', 'answers', 100),
+          shareReplay(1)
+        );
+      // this.getQuestionsList(this.userId);
+    })
+
+
+
   }
 
-  getQuestionsList(user: IUser): AngularFirestoreCollection<Question[]> {
-    // console.log(this.userId)
-    // if (!this.userId) return;
-
-    this.questionsRef = this.db.collection(`questions`, ref => ref.where('userId', '==', user.uid))
+  getQuestionsList(userId: string): AngularFirestoreCollection<Question[]> {
+    this.questionsRef = this.db.collection(`questions`, ref => ref.where('userId', '==', userId))
     this.questions$ = this.questionsRef.valueChanges({ idField: 'id' });
-    this.questions$.subscribe(questions => {
-      console.log(questions);
-    })
     return this.questions$;
   }
 

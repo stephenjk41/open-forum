@@ -29,24 +29,12 @@ export class TrendingComponent implements OnInit {
     public dash: DashboardService,
     public auth: AuthService,
     public answerService: AnswerService,
-    public dialog: MatDialog) {
-    if (auth.user$) {
-      this.userId = auth.user.uid;
-      this.displayName = auth.user.displayName;
-      console.log(this.userId)
-    }
-    // this.user$ = auth.getUserData().subscribe(user => {
-    //   this.userId = user.uid;
-    //   this.displayName = user.displayName;
-    //   console.log(this.displayName)
-    // })
-
-
-  }
+    public dialog: MatDialog) { }
 
   ngOnInit() {
-
-    // console.log(this.questions$);
+    this.trending.questions$.subscribe(question => {
+      console.log(question)
+    })
   }
 
   form: FormGroup = new FormGroup({

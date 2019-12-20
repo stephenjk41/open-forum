@@ -32,14 +32,6 @@ export class NavComponent implements OnInit {
     public auth: AuthService,
     public questionService: QuestionService,
     public dialog: MatDialog, ) {
-    if (this.auth.user$) {
-      this.userData = this.auth.user;
-      // this.auth.user$.subscribe(user => {
-      //   this.userData.uid = user.uid;
-      //   this.userData.email = user.email;
-      //   this.userData.displayName = user.displayName;
-      // })
-    }
 
   }
 
@@ -104,14 +96,7 @@ export class NewQuestionDialog implements OnInit {
 
 
 
-  ngOnInit() {
-    this.auth.user$.subscribe(user => {
-      this.userData.displayName = user.displayName;
-      this.userData.uid = user.uid;
-      this.userData.email = user.email;
-    })
-
-  }
+  ngOnInit() { }
 
   form: FormGroup = new FormGroup({
     title: new FormControl(''),

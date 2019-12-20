@@ -4,10 +4,12 @@ import {
   AngularFirestoreCollection
 } from '@angular/fire/firestore';
 import { Answer, Question } from './question.model';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { TrendingService } from './trending.service';
 import { leftJoin } from './collectionJoin';
-import { shareReplay } from 'rxjs/operators';
+import { shareReplay, switchMap } from 'rxjs/operators';
+import { IUser } from './user.model';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Injectable({
@@ -15,12 +17,17 @@ import { shareReplay } from 'rxjs/operators';
 })
 export class AnswerService {
   questions$: any;
+  user$: Observable<any>;
+  public user: IUser = {
+    uid: "",
+    email: "",
+    displayName: ""
+  }
 
 
   constructor(private db: AngularFirestore,
+    private afAuth: AngularFireAuth,
     public trending: TrendingService) {
-    // this.getAnswersList();
-
     this.questions$ = this.db
       .collection('questions')
       .valueChanges({ idField: 'id' })

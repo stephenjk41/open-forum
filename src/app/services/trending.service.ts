@@ -5,11 +5,20 @@ import {
 } from '@angular/fire/firestore';
 import { Question, Answer } from './question.model';
 import { IUser } from './user.model';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrendingService {
+  user$: Observable<any>;
+  public user: IUser = {
+    uid: "",
+    email: "",
+    displayName: ""
+  }
   questionsRef: AngularFirestoreCollection<Question[]> = null;
   answerRef: AngularFirestoreCollection<Answer[]> = null;
   questions$: any;
@@ -21,8 +30,7 @@ export class TrendingService {
     email: ""
   };
 
-  constructor(private db: AngularFirestore) {
-  }
+  constructor(private db: AngularFirestore) { }
 
   getQuestionsList(): AngularFirestoreCollection<Question[]> {
     this.questionsRef = this.db.collection(`questions`)

@@ -2,21 +2,29 @@ import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
 } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from './auth.service'
 import { Question } from './question.model';
+import { switchMap } from 'rxjs/operators';
 import { DashboardService } from './dashboard.service';
+import { IUser } from './user.model';
+import { of, Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
-  user: any;
+  user$: Observable<any>;
+  public user: IUser = {
+    uid: "",
+    email: "",
+    displayName: ""
+  }
   constructor(private db: AngularFirestore,
     private auth: AuthService,
-    private dash: DashboardService) {
-    this.user = this.auth.user$;
-  }
+    private afAuth: AngularFireAuth,
+    private dash: DashboardService) { }
   question: any;
   fbQuestion: any;
   qRef = this.dash.questionsRef;

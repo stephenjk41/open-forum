@@ -22,7 +22,7 @@
         <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="openEditDialog(question)">Edit</button>
             <button mat-menu-item (click)="deleteQuestion(question.id)">Delete</button>
-            <button mat-menu-item (click)="viewMore(question)">More</button>
+            <button mat-menu-item (click)="openViewDialog(question)">More</button>
         </mat-menu>
 
         <mat-icon mat-list-icon>question_answer</mat-icon>

@@ -45,7 +45,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1>Base</h1>\n<p>\n    <a routerLink=\"/user-dash\">Dashboard</a>\n</p>\n<div *ngIf=\"auth.user$ | async as user; else login\">\n    <pre>\n        {{ user | json }}\n    </pre>\n\n    <hr>\n    <button class=\"button\" (click)=\"auth.signOut()\">Sign Out</button>\n\n</div>\n\n<ng-template #login>\n    <button class=\"button\" (click)=\"auth.googleSignin()\">Login with Google</button>\n</ng-template>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container pt-3\">\r\n    <div class=\"row justify-content-sm-center\">\r\n        <div class=\"col-sm-10 col-md-6\">\r\n            <div class=\"card border-info\">\r\n                <div class=\"card-header\">Login</div>\r\n                <div class=\"card-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-4 text-center\">\r\n                            <img src=\"https://placeimg.com/128/128/nature\">\r\n                        </div>\r\n                        <div class=\"col-md-8\">\r\n                            <form>\r\n                                <input type=\"text\" class=\"form-control mb-2\" placeholder=\"Email\" required autofocus>\r\n                                <input type=\"password\" class=\"form-control mb-2\" placeholder=\"Password\" required>\r\n                                <button class=\"btn btn-lg btn-primary btn-block mb-1\" type=\"submit\">Login</button>\r\n                            </form>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/nav/login.html":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/nav/login.html ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <div class=\"container pt-3\">\r\n    <div class=\"row justify-content-sm-center\">\r\n        <div class=\"col-sm-10 col-md-6\">\r\n            <div class=\"card border-info\">\r\n                <div class=\"card-header\">Login</div>\r\n                <div class=\"card-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-4 text-center\">\r\n                            <img src=\"https://placeimg.com/128/128/nature\">\r\n                        </div>\r\n                        <div class=\"col-md-8\">\r\n                            <form>\r\n                                <input type=\"text\" class=\"form-control mb-2\" placeholder=\"Email\" required autofocus>\r\n                                <input type=\"password\" class=\"form-control mb-2\" placeholder=\"Password\" required>\r\n                                <button class=\"btn btn-lg btn-primary btn-block mb-1\" type=\"submit\"\r\n                                    (click)=\"auth.login()\">Login</button>\r\n                                <button class=\"btn btn-lg btn-primary btn-block mb-1\" (click)=\"gsignIn()\">Login with\r\n                                    Google</button>\r\n                            </form>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div> -->\r\n\r\n<mat-tab-group>\r\n    <mat-tab label=\"Login\">\r\n        <h1>Login</h1>\r\n        <form>\r\n            <input type=\"text\" class=\"form-control mb-2\" placeholder=\"Email\" required autofocus>\r\n            <input type=\"password\" class=\"form-control mb-2\" placeholder=\"Password\" required>\r\n            <button class=\"btn btn-lg btn-primary btn-block mb-1\" type=\"submit\" (click)=\"auth.login()\">Login</button>\r\n            <button class=\"btn btn-lg btn-primary btn-block mb-1\" (click)=\"gsignIn()\">Login with\r\n                Google</button>\r\n        </form>\r\n    </mat-tab>\r\n    <mat-tab label=\"Register\">\r\n        <h1>Some more tab content</h1>\r\n        <p>...</p>\r\n    </mat-tab>\r\n</mat-tab-group>");
 
 /***/ }),
 
@@ -58,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\" [opened]=\"(isHandset$ | async) === false\">\n    <mat-toolbar>Menu</mat-toolbar>\n    <mat-nav-list>\n      <div *ngIf=\"auth.user$ | async as user; else login\">\n        <a mat-list-item (click)=\"goHome()\">Home</a>\n        <a mat-list-item (click)=\"openDashboardDialog()\">Dashboard</a>\n        <a mat-list-item (click)=\"openNewQuestionDialog()\">New Question</a>\n        <hr>\n        <a mat-list-item (click)=\"auth.signOut()\">Sign Out</a>\n      </div>\n      <ng-template #login>\n        <a mat-list-item (click)=\"auth.googleSignin()\">Login</a>\n      </ng-template>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color=\"primary\">\n      <span class=\"gap\">Open Forum</span>\n      <span class=\"filler\"></span>\n      <div *ngIf=\" auth.user$ | async as user; else name\">\n        <span style=\"margin: auto;\">\n          {{user.displayName}}\n          <i class=\"material-icons \" style=\"margin: auto;\">account_circle</i>\n        </span>\n      </div>\n      <ng-template #name></ng-template>\n    </mat-toolbar>\n    <!-- Add Content Here -->\n    <div *ngIf=\"auth.dashOpen && auth.user$; else home\">\n      <app-user-dash></app-user-dash>\n    </div>\n    <ng-template #home>\n      <app-trending></app-trending>\n    </ng-template>\n  </mat-sidenav-content>\n</mat-sidenav-container>");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-sidenav-container class=\"sidenav-container\">\r\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\r\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\" [opened]=\"(isHandset$ | async) === false\">\r\n    <mat-toolbar>Menu</mat-toolbar>\r\n    <mat-nav-list>\r\n      <div *ngIf=\"auth.user$ | async as user; else login\">\r\n        <a mat-list-item (click)=\"goHome()\">Home</a>\r\n        <a mat-list-item (click)=\"goDashboard()\">Dashboard</a>\r\n        <a mat-list-item (click)=\"openNewQuestionDialog()\">New Question</a>\r\n        <hr>\r\n        <a mat-list-item (click)=\"auth.signOut()\">Sign Out</a>\r\n      </div>\r\n      <ng-template #login>\r\n        <a mat-list-item (click)=\"openLoginDialog()\">Login</a>\r\n      </ng-template>\r\n    </mat-nav-list>\r\n  </mat-sidenav>\r\n  <mat-sidenav-content>\r\n    <mat-toolbar color=\"primary\">\r\n      <span class=\"gap\">Open Forum</span>\r\n      <span class=\"filler\"></span>\r\n      <div *ngIf=\" auth.user$ | async as user; else name\">\r\n        <span style=\"margin: auto;\">\r\n          {{user.displayName}}\r\n          <i class=\"material-icons \" style=\"margin: auto;\">account_circle</i>\r\n        </span>\r\n      </div>\r\n      <ng-template #name></ng-template>\r\n    </mat-toolbar>\r\n    <!-- Add Content Here -->\r\n\r\n    <div *ngIf=\"auth.dashOpen && auth.user$; else home\">\r\n      <app-user-dash></app-user-dash>\r\n    </div>\r\n    <ng-template #home>\r\n      <app-trending></app-trending>\r\n    </ng-template>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>");
 
 /***/ }),
 
@@ -75,6 +88,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/trending/error.html":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/trending/error.html ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ng-container *ngIf=\"auth.user$ | async; else login\">\r\n    <h1 style=\"color: red;\"> Oops Something went wrong try again later</h1>\r\n</ng-container>\r\n\r\n<ng-template #login>\r\n    <h1 style=\"color: red;\">You must login to vote/post</h1>\r\n</ng-template>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/trending/trending.component.html":
 /*!***************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/trending/trending.component.html ***!
@@ -84,7 +110,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1>Trending Works</h1>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div>\r\n\r\n    <mat-accordion class=\"example-headers-align\">\r\n        <mat-expansion-panel\r\n            *ngFor=\"let question of answerService.questions$ | async as questions; let i = index; last as isLast; first as isFirst\"\r\n            [expanded]=\"step === i\" (opened)=\"setStep(i)\" hideToggle>\r\n            <mat-expansion-panel-header class=\"right-aligned-header\" [ngStyle]=\"{'background-color':'lightgrey'}\">\r\n                <mat-panel-title>\r\n                    <strong>{{question.title}}</strong>\r\n\r\n                </mat-panel-title>\r\n                <mat-panel-description>\r\n                    <span>{{question.author}}</span>\r\n\r\n                </mat-panel-description>\r\n            </mat-expansion-panel-header>\r\n\r\n            <hr>\r\n            <p>{{question.body}}</p>\r\n            <hr>\r\n            <mat-action-row>\r\n\r\n                <ng-container *ngIf=\"didntPost(question); else alreadyPosted\">\r\n                    <h4 style=\"margin: 2%;\">Answer </h4>\r\n                    <form [formGroup]=\"this.form\" class=\"normal-form\" style=\"width: 100%\">\r\n                        <mat-form-field style=\"width: 90%\">\r\n                            <input formControlName=\"answer\" [(ngModel)]=\"answer\" matInput placeholder=\"Answer\">\r\n                        </mat-form-field>\r\n                        <br>\r\n                        <button mat-raised-button color=\"primary\" type=\"submit\" (click)=\"postAnswer(question)\"\r\n                            style=\"margin: 0; width: 20%;\">Post</button>\r\n                    </form>\r\n                </ng-container>\r\n                <ng-template #alreadyPosted>\r\n                    <p>You already posted an answer</p>\r\n                </ng-template>\r\n                <ng-container *ngIf=\"isFirst && !isLast\">\r\n                    <button mat-button color=\"primary\" (click)=\"nextStep()\">Next</button>\r\n                </ng-container>\r\n\r\n                <ng-container *ngIf=\"isLast && !isFirst\">\r\n                    <button mat-button color=\"warn\" (click)=\"prevStep()\">Previous</button>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"!isFirst && !isLast\">\r\n                    <button mat-button color=\"warn\" (click)=\"prevStep()\">Previous</button>\r\n                    <button mat-button color=\"primary\" (click)=\"nextStep()\">Next</button>\r\n                </ng-container>\r\n\r\n\r\n            </mat-action-row>\r\n            <mat-list role=\"list\">\r\n                <mat-list-item role=\"listitem\" *ngFor=\"let answer of question.answers\">\r\n                    <mat-divider></mat-divider>\r\n                    <h3 matLine>{{answer.answer}}</h3>\r\n                    <p matLine>\r\n                        Posted by: {{answer.author}}\r\n                    </p>\r\n                    <p matLine>\r\n                        <ng-container *ngIf=\"voteDown(answer) && !voteUp(answer)\">\r\n                            <button mat-button style=\"margin: 2px; float:right\" (click)=\"downvote(answer)\">\r\n                                {{answer.downvote}}\r\n                                <mat-icon mat-list-icon [ngStyle]=\"{'color':'orange'}\">arrow_downward</mat-icon>\r\n                            </button>\r\n                            <button mat-button style=\"margin: 2px; float: right;\" (click)=\"upvote(answer)\">\r\n                                {{answer.upvote}}\r\n                                <mat-icon mat-list-icon>\r\n                                    arrow_upward</mat-icon>\r\n                                <ng-template #noVote>\r\n                                    <mat-icon mat-list-icon>arrow_upward</mat-icon>\r\n                                </ng-template>\r\n                            </button>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngIf=\"voteUp(answer) && !voteDown(answer)\">\r\n                            <button mat-button style=\"margin: 2px; float:right\" (click)=\"downvote(answer)\">\r\n                                {{answer.downvote}}\r\n                                <mat-icon mat-list-icon>arrow_downward</mat-icon>\r\n                            </button>\r\n                            <button mat-button style=\"margin: 2px; float: right;\" (click)=\"upvote(answer)\">\r\n                                {{answer.upvote}}\r\n                                <mat-icon mat-list-icon [ngStyle]=\"{'color':'orange'}\">\r\n                                    arrow_upward</mat-icon>\r\n\r\n                            </button>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngIf=\"!voteUp(answer) && !voteDown(answer)\">\r\n                            <button mat-button style=\"margin: 2px; float:right\" (click)=\"downvote(answer)\">\r\n                                {{answer.downvote}}\r\n                                <mat-icon mat-list-icon>arrow_downward</mat-icon>\r\n                            </button>\r\n                            <button mat-button style=\"margin: 2px; float: right;\" (click)=\"upvote(answer)\">\r\n                                {{answer.upvote}}\r\n                                <mat-icon mat-list-icon>\r\n                                    arrow_upward</mat-icon>\r\n\r\n                            </button>\r\n                        </ng-container>\r\n\r\n                    </p>\r\n                </mat-list-item>\r\n            </mat-list>\r\n        </mat-expansion-panel>\r\n    </mat-accordion>\r\n</div>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-dash/edit-profile.html":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-dash/edit-profile.html ***!
+  \**********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"auth.user$ | async as user\">\r\n    <!-- <form [formGroup]=\"this.form\" class=\"normal-form\" style=\"width: 100%\">\r\n        <mat-form-field style=\"width: 50%\">\r\n            <input formControlName=\"displayName\" [(ngModel)]=\"displayName\" matInput placeholder=\"Username\"\r\n                value=\"{{user.displayName}}\">\r\n        </mat-form-field>\r\n        <br>\r\n        <mat-form-field style=\"width: 50%\">\r\n            <input formControlName=\"firstName\" [(ngModel)]=\"firstName\" matInput placeholder=\"First Name\">\r\n        </mat-form-field>\r\n        <br>\r\n        <mat-form-field style=\"width: 50%\">\r\n            <input formControlName=\"title\" [(ngModel)]=\"title\" matInput placeholder=\"Question Title\">\r\n        </mat-form-field>\r\n        <br>\r\n        <mat-form-field style=\"width: 50%\">\r\n            <input formControlName=\"title\" [(ngModel)]=\"title\" matInput placeholder=\"Question Title\">\r\n        </mat-form-field>\r\n        <br>\r\n        <button mat-raised-button color=\"primary\" type=\"submit\" (click)=\"postAnswer(question)\"\r\n            style=\"margin: 0; width: 20%;\">Post</button>\r\n    </form> -->\r\n</div>");
 
 /***/ }),
 
@@ -110,7 +149,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"auth.user$ | async as user; else main\">\n    <div>\n        <h1>{{this.user.displayName}}</h1>\n        <p>Email: {{this.user.email}}</p>\n    </div>\n    <mat-list role=\"list\">\n        <mat-list-item role=\"listitem\" *ngFor=\"let question of dash.questions$ | async\">\n            <button mat-button [matMenuTriggerFor]=\"menu\">\n                <mat-icon mat-list-icon>reorder</mat-icon>\n            </button>\n            <mat-menu #menu=\"matMenu\">\n                <button mat-menu-item (click)=\"openEditDialog(question)\">Edit</button>\n                <button mat-menu-item (click)=\"deleteQuestion(question.id)\">Delete</button>\n            </mat-menu>\n\n            <mat-icon mat-list-icon>question_answer</mat-icon>\n            <h4 mat-line>{{question.title}}</h4>\n            <p mat-line>{{question.body}}</p>\n        </mat-list-item>\n    </mat-list>\n</div>\n<ng-template #main>\n    <app-trending></app-trending>\n</ng-template>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"auth.user$ | async as user\">\r\n    <mat-grid-list style=\"background: white;\" cols=\"9\" rowHeight=\"1.5:1\">\r\n        <mat-grid-tile colspan=\"1\">\r\n            <h1>{{user.displayName}}</h1>\r\n        </mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile colspan=\"2\">\r\n            <button mat-raised-button color=\"primary\" (click)=\"openEditProfile(dash.user$)\">Edit Profile</button>\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n</div>\r\n<mat-list role=\"list\">\r\n    <mat-list-item role=\"listitem\" *ngFor=\"let question of dash.questions$ | async\">\r\n        <button mat-button [matMenuTriggerFor]=\"menu\">\r\n            <mat-icon mat-list-icon>reorder</mat-icon>\r\n        </button>\r\n        <mat-menu #menu=\"matMenu\">\r\n            <button mat-menu-item (click)=\"openEditDialog(question)\">Edit</button>\r\n            <button mat-menu-item (click)=\"deleteQuestion(question.id)\">Delete</button>\r\n            <button mat-menu-item (click)=\"viewMore(question)\">More</button>\r\n        </mat-menu>\r\n\r\n        <mat-icon mat-list-icon>question_answer</mat-icon>\r\n        <h4 mat-line>{{question.title}}</h4>\r\n        <p mat-line>{{question.body}}</p>\r\n    </mat-list-item>\r\n</mat-list>\r\n\r\n<ng-template #main>\r\n    <app-trending></app-trending>\r\n</ng-template>");
 
 /***/ }),
 
@@ -388,7 +427,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".right-aligned-header > .mat-content {\r\n  justify-content: space-between;\r\n}\r\n\r\n.mat-content > mat-panel-title,\r\n.mat-content > mat-panel-description {\r\n  flex: 0 0 auto;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSw4QkFBOEI7QUFDaEM7O0FBRUE7O0VBRUUsY0FBYztBQUNoQiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnJpZ2h0LWFsaWduZWQtaGVhZGVyID4gLm1hdC1jb250ZW50IHtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbn1cclxuXHJcbi5tYXQtY29udGVudCA+IG1hdC1wYW5lbC10aXRsZSxcclxuLm1hdC1jb250ZW50ID4gbWF0LXBhbmVsLWRlc2NyaXB0aW9uIHtcclxuICBmbGV4OiAwIDAgYXV0bztcclxufVxyXG4iXX0= */");
 
 /***/ }),
 
@@ -442,26 +481,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/nav/nav.component */ "./src/app/components/nav/nav.component.ts");
 /* harmony import */ var _components_login_register_login_register_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/login-register/login-register.component */ "./src/app/components/login-register/login-register.component.ts");
 /* harmony import */ var _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/user-dash/user-dash.component */ "./src/app/components/user-dash/user-dash.component.ts");
-/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm2015/dialog.js");
-/* harmony import */ var _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/toolbar */ "./node_modules/@angular/material/esm2015/toolbar.js");
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm2015/button.js");
-/* harmony import */ var _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/sidenav */ "./node_modules/@angular/material/esm2015/sidenav.js");
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm2015/icon.js");
-/* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm2015/list.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
-/* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm2015/layout.js");
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material/form-field */ "./node_modules/@angular/material/esm2015/form-field.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
-/* harmony import */ var _angular_cdk_text_field__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/cdk/text-field */ "./node_modules/@angular/cdk/esm2015/text-field.js");
-/* harmony import */ var _angular_material_menu__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/menu */ "./node_modules/@angular/material/esm2015/menu.js");
-/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm2015/table.js");
-/* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm2015/expansion.js");
-/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
-/* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/es2015/index.js");
-/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _components_trending_trending_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/trending/trending.component */ "./src/app/components/trending/trending.component.ts");
+/* harmony import */ var _components_trending_trending_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/trending/trending.component */ "./src/app/components/trending/trending.component.ts");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm2015/dialog.js");
+/* harmony import */ var _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/toolbar */ "./node_modules/@angular/material/esm2015/toolbar.js");
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/esm2015/button.js");
+/* harmony import */ var _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/sidenav */ "./node_modules/@angular/material/esm2015/sidenav.js");
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm2015/icon.js");
+/* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm2015/list.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+/* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm2015/layout.js");
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material/form-field */ "./node_modules/@angular/material/esm2015/form-field.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var _angular_cdk_text_field__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/cdk/text-field */ "./node_modules/@angular/cdk/esm2015/text-field.js");
+/* harmony import */ var _angular_material_menu__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/menu */ "./node_modules/@angular/material/esm2015/menu.js");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/table */ "./node_modules/@angular/material/esm2015/table.js");
+/* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm2015/expansion.js");
+/* harmony import */ var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material/grid-list */ "./node_modules/@angular/material/esm2015/grid-list.js");
+/* harmony import */ var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material/tabs */ "./node_modules/@angular/material/esm2015/tabs.js");
+/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+/* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/es2015/index.js");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
 
 
 
@@ -472,8 +513,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-//Service
+
 //Material
+
+
 
 
 
@@ -494,7 +537,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -505,39 +547,44 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["UserDashComponent"],
             _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["NavComponent"],
             _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["NewQuestionDialog"],
-            _components_trending_trending_component__WEBPACK_IMPORTED_MODULE_28__["TrendingComponent"],
-            _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["EditDialog"]
+            _components_trending_trending_component__WEBPACK_IMPORTED_MODULE_9__["TrendingComponent"],
+            _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["EditDialog"],
+            _components_trending_trending_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"],
+            _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["EditProfile"],
+            _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["LoginDialog"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
-            _angular_fire__WEBPACK_IMPORTED_MODULE_23__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_27__["environment"].firebaseConfig),
-            _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_24__["AngularFirestoreModule"],
-            _angular_fire_auth__WEBPACK_IMPORTED_MODULE_26__["AngularFireAuthModule"],
-            _angular_fire_storage__WEBPACK_IMPORTED_MODULE_25__["AngularFireStorageModule"],
-            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_15__["BrowserAnimationsModule"],
-            _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_16__["LayoutModule"],
-            _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_10__["MatToolbarModule"],
-            _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButtonModule"],
-            _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_12__["MatSidenavModule"],
-            _angular_material_icon__WEBPACK_IMPORTED_MODULE_13__["MatIconModule"],
-            _angular_material_list__WEBPACK_IMPORTED_MODULE_14__["MatListModule"],
-            _angular_material_dialog__WEBPACK_IMPORTED_MODULE_9__["MatDialogModule"],
+            _angular_fire__WEBPACK_IMPORTED_MODULE_26__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_30__["environment"].firebaseConfig),
+            _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_27__["AngularFirestoreModule"],
+            _angular_fire_auth__WEBPACK_IMPORTED_MODULE_29__["AngularFireAuthModule"],
+            _angular_fire_storage__WEBPACK_IMPORTED_MODULE_28__["AngularFireStorageModule"],
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_16__["BrowserAnimationsModule"],
+            _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_17__["LayoutModule"],
+            _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_11__["MatToolbarModule"],
+            _angular_material_button__WEBPACK_IMPORTED_MODULE_12__["MatButtonModule"],
+            _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_13__["MatSidenavModule"],
+            _angular_material_icon__WEBPACK_IMPORTED_MODULE_14__["MatIconModule"],
+            _angular_material_list__WEBPACK_IMPORTED_MODULE_15__["MatListModule"],
+            _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MatDialogModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"],
-            _angular_material_form_field__WEBPACK_IMPORTED_MODULE_17__["MatFormFieldModule"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_18__["MatInputModule"],
-            _angular_cdk_text_field__WEBPACK_IMPORTED_MODULE_19__["TextFieldModule"],
-            _angular_material_menu__WEBPACK_IMPORTED_MODULE_20__["MatMenuModule"],
-            _angular_material_table__WEBPACK_IMPORTED_MODULE_21__["MatTableModule"],
-            _angular_material_expansion__WEBPACK_IMPORTED_MODULE_22__["MatExpansionModule"]
+            _angular_material_form_field__WEBPACK_IMPORTED_MODULE_18__["MatFormFieldModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_19__["MatInputModule"],
+            _angular_cdk_text_field__WEBPACK_IMPORTED_MODULE_20__["TextFieldModule"],
+            _angular_material_menu__WEBPACK_IMPORTED_MODULE_21__["MatMenuModule"],
+            _angular_material_table__WEBPACK_IMPORTED_MODULE_22__["MatTableModule"],
+            _angular_material_expansion__WEBPACK_IMPORTED_MODULE_23__["MatExpansionModule"],
+            _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_24__["MatGridListModule"],
+            _angular_material_tabs__WEBPACK_IMPORTED_MODULE_25__["MatTabsModule"]
         ],
         providers: [
-            { provide: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_9__["MAT_DIALOG_DATA"], useValue: {} },
-            { provide: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_9__["MatDialogRef"], useValue: {} }
+            { provide: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MAT_DIALOG_DATA"], useValue: {} },
+            { provide: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MatDialogRef"], useValue: {} }
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
-        entryComponents: [_components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["NewQuestionDialog"], _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["EditDialog"]]
+        entryComponents: [_components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["NewQuestionDialog"], _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["EditDialog"], _components_trending_trending_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"], _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["EditProfile"], _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["LoginDialog"]]
     })
 ], AppModule);
 
@@ -554,7 +601,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbG9naW4tcmVnaXN0ZXIvbG9naW4tcmVnaXN0ZXIuY29tcG9uZW50LmNzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = (".card {\r\n  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9sb2dpbi1yZWdpc3Rlci9sb2dpbi1yZWdpc3Rlci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsMEVBQTBFO0FBQzVFIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9sb2dpbi1yZWdpc3Rlci9sb2dpbi1yZWdpc3Rlci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcmQge1xyXG4gIGJveC1zaGFkb3c6IDAgMTBweCAyMHB4IHJnYmEoMCwgMCwgMCwgMC4xOSksIDAgNnB4IDZweCByZ2JhKDAsIDAsIDAsIDAuMjMpO1xyXG59XHJcbiJdfQ== */");
 
 /***/ }),
 
@@ -613,12 +660,13 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************!*\
   !*** ./src/app/components/nav/nav.component.ts ***!
   \*************************************************/
-/*! exports provided: NavComponent, NewQuestionDialog */
+/*! exports provided: NavComponent, LoginDialog, NewQuestionDialog */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavComponent", function() { return NavComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginDialog", function() { return LoginDialog; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewQuestionDialog", function() { return NewQuestionDialog; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
@@ -650,25 +698,31 @@ let NavComponent = class NavComponent {
         };
         this.isHandset$ = this.breakpointObserver.observe(_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["Breakpoints"].Handset)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(result => result.matches), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["shareReplay"])());
+        if (this.auth.user$) {
+            this.userData = this.auth.user;
+            // this.auth.user$.subscribe(user => {
+            //   this.userData.uid = user.uid;
+            //   this.userData.email = user.email;
+            //   this.userData.displayName = user.displayName;
+            // })
+        }
     }
     ngOnInit() {
-        this.auth.user$.subscribe(user => {
-            console.log(user);
-            this.userData.displayName = user.displayName;
-            this.userData.uid = user.uid;
-            this.userData.email = user.email;
-            console.log(this.userData);
-        });
     }
     openNewQuestionDialog() {
         const dialogRef = this.dialog.open(NewQuestionDialog, { width: "50%" });
     }
     goHome() {
         this.auth.dashOpen = false;
+        this.auth.loginOpen = false;
     }
-    openDashboardDialog() {
-        this.auth.dashOpen = !this.auth.dashOpen;
+    goDashboard() {
+        this.auth.dashOpen = true;
+        this.auth.loginOpen = false;
         console.log(this.auth.dashOpen);
+    }
+    openLoginDialog() {
+        const dialogRef = this.dialog.open(LoginDialog, { width: "50%" });
     }
 };
 NavComponent.ctorParameters = () => [
@@ -685,6 +739,28 @@ NavComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     })
 ], NavComponent);
 
+let LoginDialog = class LoginDialog {
+    constructor(auth, dialogRef) {
+        this.auth = auth;
+        this.dialogRef = dialogRef;
+    }
+    ngOnInit() { }
+    gsignIn() {
+        this.auth.googleSignin();
+        this.dialogRef.close();
+    }
+};
+LoginDialog.ctorParameters = () => [
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
+    { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialogRef"] }
+];
+LoginDialog = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'login',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./login.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/nav/login.html")).default
+    })
+], LoginDialog);
+
 let NewQuestionDialog = class NewQuestionDialog {
     constructor(dialogRef, auth, questionService) {
         this.dialogRef = dialogRef;
@@ -695,14 +771,6 @@ let NewQuestionDialog = class NewQuestionDialog {
             email: "",
             displayName: ""
         };
-        this.newQuestion = {
-            uid: "",
-            title: "",
-            body: "",
-            author: "",
-            time: "",
-            userId: "",
-        };
         this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormGroup"]({
             title: new _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormControl"](''),
             body: new _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormControl"](''),
@@ -710,11 +778,9 @@ let NewQuestionDialog = class NewQuestionDialog {
     }
     ngOnInit() {
         this.auth.user$.subscribe(user => {
-            console.log(user);
             this.userData.displayName = user.displayName;
             this.userData.uid = user.uid;
             this.userData.email = user.email;
-            console.log(this.userData);
         });
     }
     initializeFormGroup() {
@@ -724,6 +790,7 @@ let NewQuestionDialog = class NewQuestionDialog {
         });
     }
     setQuestionData() {
+        this.newQuestion = this.questionService.newQuestionTemplate(this.newQuestion);
         this.newQuestion.author = this.userData.displayName;
         this.newQuestion.userId = this.userData.uid;
         this.newQuestion.time = String(Date.now());
@@ -769,21 +836,166 @@ __webpack_require__.r(__webpack_exports__);
 /*!***********************************************************!*\
   !*** ./src/app/components/trending/trending.component.ts ***!
   \***********************************************************/
-/*! exports provided: TrendingComponent */
+/*! exports provided: TrendingComponent, ErrorComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrendingComponent", function() { return TrendingComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorComponent", function() { return ErrorComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_services_trending_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/trending.service */ "./src/app/services/trending.service.ts");
+/* harmony import */ var src_app_services_dashboard_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/dashboard.service */ "./src/app/services/dashboard.service.ts");
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm2015/dialog.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var src_app_services_answer_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/answer.service */ "./src/app/services/answer.service.ts");
+
+
+
+
+
+
 
 
 let TrendingComponent = class TrendingComponent {
-    constructor() { }
+    constructor(trending, dash, auth, answerService, dialog) {
+        this.trending = trending;
+        this.dash = dash;
+        this.auth = auth;
+        this.answerService = answerService;
+        this.dialog = dialog;
+        this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+            answer: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
+        });
+        this.step = 0;
+        if (auth.user$) {
+            this.userId = auth.user.uid;
+            this.displayName = auth.user.displayName;
+            console.log(this.userId);
+        }
+        // this.user$ = auth.getUserData().subscribe(user => {
+        //   this.userId = user.uid;
+        //   this.displayName = user.displayName;
+        //   console.log(this.displayName)
+        // })
+    }
     ngOnInit() {
+        // console.log(this.questions$);
+    }
+    postAnswer(question) {
+        if (this.form.controls.answer.touched && !this.form.controls.answer.pristine) {
+            this.newAnswer = this.answerService.newAnswerTemplate(question);
+            this.newAnswer.answer = this.form.value.answer;
+            this.newAnswer.author = this.displayName;
+            this.newAnswer.upvotedUsers = [];
+            this.newAnswer.downvotedUsers = [];
+            this.trending.loginError = false;
+            this.answerService.create_NewAnswer(this.newAnswer);
+        }
+        else if (!this.auth.signedIn) {
+            this.trending.loginError = true;
+            console.log("sneaky test");
+            const dialogRef = this.dialog.open(ErrorComponent, { width: "20%" });
+        }
+        else {
+            const dialogRef = this.dialog.open(ErrorComponent, { width: "20%" });
+        }
+    }
+    upvote(answer) {
+        var upAnswer = this.answerService.voteAnswerTemplate(answer);
+        const containsUp = answer.upvotedUsers.some(user => user === this.userId);
+        const containsDown = answer.downvotedUsers.some(user => user === this.userId);
+        if (this.auth.signedIn) {
+            console.log("sneakier test");
+            if (!containsUp && !containsDown && (upAnswer.score <= 100 && upAnswer.score >= -100)) {
+                answer.upvotedUsers.push(this.userId);
+                upAnswer.upvote += 1;
+                upAnswer.score = (upAnswer.upvote - upAnswer.downvote);
+                this.answerService.edit_answer(upAnswer);
+            }
+            else if (!containsUp && containsDown && (upAnswer.score <= 100 && upAnswer.score >= -100)) {
+                const i = answer.downvotedUsers.indexOf(this.userId);
+                answer.downvotedUsers.splice(i, 1);
+                answer.upvotedUsers.push(this.userId);
+                upAnswer.upvote += 1;
+                upAnswer.downvote -= 1;
+                upAnswer.score = (upAnswer.upvote - upAnswer.downvote);
+                this.answerService.edit_answer(upAnswer);
+            }
+            else
+                console.log("already voted up");
+        }
+        else {
+            const dialogRef = this.dialog.open(ErrorComponent, { width: "50%" });
+        }
+    }
+    downvote(answer) {
+        var downAnswer = this.answerService.voteAnswerTemplate(answer);
+        const containsUp = answer.upvotedUsers.some(user => user === this.userId);
+        const containsDown = answer.downvotedUsers.some(user => user === this.userId);
+        if (this.auth.signedIn) {
+            if (!containsUp && !containsDown && (downAnswer.score <= 100 && downAnswer.score >= -100)) {
+                answer.downvotedUsers.push(this.userId);
+                downAnswer.downvote += 1;
+                downAnswer.score = (downAnswer.upvote - downAnswer.downvote);
+                this.answerService.edit_answer(downAnswer);
+            }
+            else if (containsUp && !containsDown && (downAnswer.score <= 100 && downAnswer.score >= -100)) {
+                const i = answer.upvotedUsers.indexOf(this.userId);
+                answer.upvotedUsers.splice(i, 1);
+                answer.downvotedUsers.push(this.userId);
+                downAnswer.upvote -= 1;
+                downAnswer.downvote += 1;
+                downAnswer.score = (downAnswer.upvote - downAnswer.downvote);
+                this.answerService.edit_answer(downAnswer);
+            }
+            else
+                console.log("already voted down");
+        }
+        else {
+            const dialogRef = this.dialog.open(ErrorComponent, { width: "50%" });
+        }
+    }
+    setStep(index) {
+        this.step = index;
+    }
+    nextStep() {
+        this.step++;
+    }
+    prevStep() {
+        this.step--;
+    }
+    didntPost(question) {
+        var found = question.answers.some(answer => answer.author === this.displayName);
+        if (!found)
+            return true;
+        else
+            return false;
+    }
+    voteUp(answer) {
+        var found = answer.upvotedUsers.some(uid => uid === this.userId);
+        if (found)
+            return true;
+        else
+            return false;
+    }
+    voteDown(answer) {
+        var found = answer.downvotedUsers.some(uid => uid === this.userId);
+        if (found)
+            return true;
+        else
+            return false;
     }
 };
+TrendingComponent.ctorParameters = () => [
+    { type: src_app_services_trending_service__WEBPACK_IMPORTED_MODULE_2__["TrendingService"] },
+    { type: src_app_services_dashboard_service__WEBPACK_IMPORTED_MODULE_3__["DashboardService"] },
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
+    { type: src_app_services_answer_service__WEBPACK_IMPORTED_MODULE_7__["AnswerService"] },
+    { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialog"] }
+];
 TrendingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-trending',
@@ -791,6 +1003,21 @@ TrendingComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./trending.component.css */ "./src/app/components/trending/trending.component.css")).default]
     })
 ], TrendingComponent);
+
+let ErrorComponent = class ErrorComponent {
+    constructor(auth) {
+        this.auth = auth;
+    }
+};
+ErrorComponent.ctorParameters = () => [
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] }
+];
+ErrorComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'error',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./error.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/trending/error.html")).default
+    })
+], ErrorComponent);
 
 
 
@@ -813,12 +1040,13 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************!*\
   !*** ./src/app/components/user-dash/user-dash.component.ts ***!
   \*************************************************************/
-/*! exports provided: UserDashComponent, EditDialog */
+/*! exports provided: UserDashComponent, EditProfile, EditDialog */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserDashComponent", function() { return UserDashComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditProfile", function() { return EditProfile; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditDialog", function() { return EditDialog; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
@@ -848,12 +1076,7 @@ let UserDashComponent = class UserDashComponent {
         };
     }
     ngOnInit() {
-        this.questions = this.dash.getQuestionsList();
-        this.auth.user$.subscribe(user => {
-            this.user.displayName = user.displayName;
-            this.user.uid = user.uid;
-            this.user.email = user.email;
-        });
+        this.questions = this.dash.getQuestionsList(this.auth.user);
     }
     deleteQuestion(questionId) {
         console.log(questionId);
@@ -867,6 +1090,11 @@ let UserDashComponent = class UserDashComponent {
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed', result);
             this.dialogValue = result.data;
+        });
+    }
+    openEditProfile() {
+        const dialogRef = this.dialog.open(EditProfile, {
+            width: "70%",
         });
     }
 };
@@ -886,6 +1114,28 @@ UserDashComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](4, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_5__["MAT_DIALOG_DATA"]))
 ], UserDashComponent);
 
+let EditProfile = class EditProfile {
+    constructor(auth) {
+        this.auth = auth;
+        this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+            displayName: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
+            dob: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
+            firstName: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
+            lastName: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
+        });
+    }
+    ngOnInit() { }
+};
+EditProfile.ctorParameters = () => [
+    { type: src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }
+];
+EditProfile = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'edit-profile',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./edit-profile.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-dash/edit-profile.html")).default
+    })
+], EditProfile);
+
 let EditDialog = class EditDialog {
     constructor(dialogRef, data, dash) {
         this.dialogRef = dialogRef;
@@ -900,9 +1150,11 @@ let EditDialog = class EditDialog {
             uid: data.questionData.uid,
             title: data.questionData.title,
             body: data.questionData.body,
+            qid: data.questionData.qid,
             author: data.questionData.author,
             time: data.questionData.time,
             userId: data.questionData.userId,
+            answers: data.questionData.answers
         };
         console.log(this.fromPage);
     }
@@ -935,6 +1187,90 @@ EditDialog = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"])()), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_5__["MAT_DIALOG_DATA"]))
 ], EditDialog);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/answer.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/services/answer.service.ts ***!
+  \********************************************/
+/*! exports provided: AnswerService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnswerService", function() { return AnswerService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+/* harmony import */ var _trending_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./trending.service */ "./src/app/services/trending.service.ts");
+/* harmony import */ var _collectionJoin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./collectionJoin */ "./src/app/services/collectionJoin.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
+
+
+
+
+let AnswerService = class AnswerService {
+    constructor(db, trending) {
+        // this.getAnswersList();
+        this.db = db;
+        this.trending = trending;
+        this.questions$ = this.db
+            .collection('questions')
+            .valueChanges({ idField: 'id' })
+            .pipe(Object(_collectionJoin__WEBPACK_IMPORTED_MODULE_4__["leftJoin"])(this.db, 'qid', 'answers', 100), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["shareReplay"])(1));
+    }
+    create_NewAnswer(record) {
+        return this.db.collection(`answers`).doc(record.aid).set(record);
+    }
+    edit_answer(record) {
+        return this.db.collection(`answers`).doc(record.aid).update(record);
+    }
+    delete_answer(record) {
+        return this.db.collection(`answers`).doc(record.id).delete();
+    }
+    newAnswerTemplate(question) {
+        var data = {
+            aid: this.db.createId(),
+            qid: question.qid,
+            answer: '',
+            author: '',
+            upvote: 0,
+            downvote: 0,
+            upvotedUsers: [],
+            downvotedUsers: [],
+            score: 0
+        };
+        return data;
+    }
+    voteAnswerTemplate(answer) {
+        var data = {
+            aid: answer.aid,
+            qid: answer.qid,
+            answer: answer.answer,
+            author: answer.author,
+            upvote: answer.upvote,
+            downvote: answer.downvote,
+            upvotedUsers: answer.upvotedUsers,
+            downvotedUsers: answer.downvotedUsers,
+            score: answer.score
+        };
+        return data;
+    }
+};
+AnswerService.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] },
+    { type: _trending_service__WEBPACK_IMPORTED_MODULE_3__["TrendingService"] }
+];
+AnswerService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], AnswerService);
 
 
 
@@ -1021,6 +1357,8 @@ let AuthService = class AuthService {
         this.afs = afs;
         this.router = router;
         this.dashOpen = false;
+        this.loginOpen = false;
+        this.signedIn = false;
         this.user = {
             uid: "",
             email: "",
@@ -1028,16 +1366,43 @@ let AuthService = class AuthService {
         };
         this.user$ = this.afAuth.authState.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["switchMap"])(user => {
             if (user) {
+                this.signedIn = true;
+                this.user$.subscribe(user => {
+                    this.user.displayName = user.displayName;
+                    this.user.uid = user.uid;
+                    this.user.email = user.email;
+                });
                 return this.afs.doc(`users/${user.uid}`).valueChanges();
             }
             else {
+                this.signedIn = false;
                 return Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(null);
             }
         }));
-        this.user$.subscribe(user => {
-            this.user.displayName = user.displayName;
-            this.user.uid = user.uid;
-            this.user.email = user.email;
+    }
+    sendUserData(user) {
+        return this.user;
+    }
+    login(email, password) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            var result = yield this.afAuth.auth.signInWithEmailAndPassword(email, password);
+        });
+    }
+    register(email, password) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            var result = yield this.afAuth.auth.createUserWithEmailAndPassword(email, password);
+            this.sendEmailVerification();
+        });
+    }
+    sendEmailVerification() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            yield this.afAuth.auth.currentUser.sendEmailVerification();
+            this.router.navigate(['admin/verify-email']);
+        });
+    }
+    sendPasswordResetEmail(passwordResetEmail) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            return yield this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail);
         });
     }
     googleSignin() {
@@ -1063,7 +1428,6 @@ let AuthService = class AuthService {
             email: user.email,
             displayName: user.displayName,
         };
-        console.log(user);
         return userRef.set(data, { merge: true });
     }
     getUserData() {
@@ -1081,6 +1445,60 @@ AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     })
 ], AuthService);
 
+
+
+/***/ }),
+
+/***/ "./src/app/services/collectionJoin.ts":
+/*!********************************************!*\
+  !*** ./src/app/services/collectionJoin.ts ***!
+  \********************************************/
+/*! exports provided: leftJoin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "leftJoin", function() { return leftJoin; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
+
+const leftJoin = (afs, field, collection, limit = 100) => {
+    return source => Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["defer"])(() => {
+        // Operator state
+        let collectionData;
+        // Track total num of joined doc reads
+        let totalJoins = 0;
+        return source.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])(data => {
+            // Clear mapping on each emitted val ;
+            // Save the parent data state
+            collectionData = data;
+            const reads$ = [];
+            for (const doc of collectionData) {
+                // Push doc read to Array
+                if (doc[field]) {
+                    // Perform query on join key, with optional limit
+                    const q = ref => ref.where(field, '==', doc[field]).where("score", ">=", limit * -1).orderBy("score", "desc").limit(limit);
+                    reads$.push(afs.collection(collection, q).valueChanges());
+                }
+                else {
+                    reads$.push(Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])([]));
+                }
+            }
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(reads$);
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(joins => {
+            return collectionData.map((v, i) => {
+                totalJoins += joins[i].length;
+                return Object.assign({}, v, { [collection]: joins[i] || null });
+            });
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(final => {
+            console.log(`Queried ${final.length}, Joined ${totalJoins} docs`);
+            totalJoins = 0;
+        }));
+    });
+};
 
 
 /***/ }),
@@ -1116,16 +1534,22 @@ let DashboardService = class DashboardService {
             displayName: "",
             email: ""
         };
-        this.auth.user$.subscribe(user => {
-            this.cUser.uid = user.uid;
-            this.cUser.email = user.email;
-            this.cUser.displayName = user.displayName;
-        });
+        console.log(this.auth.user$);
+        if (this.auth.user$) {
+            this.questions$ = this.getQuestionsList(this.auth.user);
+            // this.auth.user$.subscribe(user => {
+            // this.cUser.uid = user.uid;
+            // this.cUser.email = user.email;
+            // this.cUser.displayName = user.displayName;
+            // console.log(this.auth.user)
+            // this.questions$ = this.getQuestionsList(this.auth.user)
+            // })
+        }
     }
-    getQuestionsList() {
+    getQuestionsList(user) {
         // console.log(this.userId)
         // if (!this.userId) return;
-        this.questionsRef = this.db.collection(`questions`, ref => ref.where('userId', '==', this.cUser.uid));
+        this.questionsRef = this.db.collection(`questions`, ref => ref.where('userId', '==', user.uid));
         this.questions$ = this.questionsRef.valueChanges({ idField: 'id' });
         this.questions$.subscribe(questions => {
             console.log(questions);
@@ -1195,7 +1619,20 @@ let QuestionService = class QuestionService {
         });
     }
     create_NewQuestion(record) {
-        return this.db.collection(`questions`).add(record);
+        return this.db.collection(`questions`).doc(record.qid).set(record);
+    }
+    newQuestionTemplate(data) {
+        data = {
+            uid: "",
+            title: "",
+            body: "",
+            qid: this.db.createId(),
+            author: "",
+            time: "",
+            userId: "",
+            answers: []
+        };
+        return data;
     }
 };
 QuestionService.ctorParameters = () => [
@@ -1208,6 +1645,56 @@ QuestionService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         providedIn: 'root'
     })
 ], QuestionService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/trending.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/services/trending.service.ts ***!
+  \**********************************************/
+/*! exports provided: TrendingService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrendingService", function() { return TrendingService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+
+
+
+let TrendingService = class TrendingService {
+    constructor(db) {
+        this.db = db;
+        this.questionsRef = null;
+        this.answerRef = null;
+        this.loginError = false;
+        this.cUser = {
+            uid: "",
+            displayName: "",
+            email: ""
+        };
+    }
+    getQuestionsList() {
+        this.questionsRef = this.db.collection(`questions`);
+        this.questions$ = this.questionsRef.valueChanges({ idField: 'id' });
+        return this.questions$;
+    }
+    edit_question(record_id, question) {
+        this.questionsRef.doc(record_id).update(question);
+    }
+};
+TrendingService.ctorParameters = () => [
+    { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] }
+];
+TrendingService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    })
+], TrendingService);
 
 
 

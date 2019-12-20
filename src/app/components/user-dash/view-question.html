@@ -1,0 +1,32 @@
+<!-- <pre>
+    {{fromPage | json}}
+</pre> -->
+<ng-container>
+    <mat-tab-group>
+        <mat-tab label="Question Info">
+            <h3>{{fromPage.title}}</h3>
+            <p>{{fromPage.body}}</p>
+            <p>{{fromPage.time | date:'medium' }}</p>
+        </mat-tab>
+        <mat-tab label="Answers">
+            <mat-list>
+                <mat-list-item *ngFor="let answer of fromPage.answers">
+                    <h3 matLine> {{answer.answer}} </h3>
+                    <p matLine> {{answer.author}} </p>
+                    <p matLine class="demo-2">
+                        <ng-container>
+                            {{answer.upvote}}
+                            <mat-icon mat-list-icon>arrow_upward</mat-icon>
+                        </ng-container>
+                        <ng-container>
+                            {{answer.downvote}}
+                            <mat-icon mat-list-icon>arrow_downward</mat-icon>
+                        </ng-container>
+
+                    </p>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+            </mat-list>
+        </mat-tab>
+    </mat-tab-group>
+</ng-container>

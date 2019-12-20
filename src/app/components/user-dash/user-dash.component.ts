@@ -32,7 +32,7 @@ export class UserDashComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.questions = this.dash.getQuestionsList(this.auth.user);
+
   }
 
   deleteQuestion(questionId: string) {
@@ -58,6 +58,20 @@ export class UserDashComponent implements OnInit {
     });
   }
 
+  openViewDialog(question): void {
+    const dialogRef = this.dialog.open(ViewQuestionDialog, {
+      width: "90%",
+      data: { questionData: question }
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed', result);
+    //   this.dialogValue = result.data;
+    // });
+  }
+
+
+
 }
 
 @Component({
@@ -66,14 +80,57 @@ export class UserDashComponent implements OnInit {
 })
 
 export class EditProfile implements OnInit {
-  constructor(public auth: AuthService) { }
+  user: IUser;
+  constructor(public auth: AuthService) {
+    this.auth.user$.subscribe(user => {
+      this.user = {
+        uid: user.uid,
+        displayName: user.displayName,
+        email: user.email,
+        fname: user.fname,
+        lname: user.lname,
+        dob: user.dob
+      }
+    })
+  }
+
   ngOnInit() { }
+
   form: FormGroup = new FormGroup({
     displayName: new FormControl(''),
     dob: new FormControl(''),
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+    fname: new FormControl(''),
+    lname: new FormControl(''),
+    email: new FormControl('')
   });
+
+  setUserData() {
+    console.log(this.form)
+    if (this.form.controls.displayName.touched && !this.form.controls.displayName.pristine) {
+      this.user.displayName = this.form.value.displayName;
+    }
+    if (this.form.controls.dob.touched && !this.form.controls.dob.pristine) {
+      this.user.dob = this.form.value.dob;
+    }
+    if (this.form.controls.fname.touched && !this.form.controls.fname.pristine) {
+      this.user.fname = this.form.value.fname;
+    }
+    if (this.form.controls.lname.touched && !this.form.controls.lname.pristine) {
+      this.user.lname = this.form.value.lname;
+    }
+    if (this.form.controls.email.touched && !this.form.controls.email.pristine) {
+      this.user.email = this.form.value.email;
+    }
+
+  }
+
+  editUser() {
+    this.setUserData();
+    console.log(this.user)
+    this.auth.edit_user(this.user);
+  }
+
+
 }
 
 @Component({
@@ -124,5 +181,57 @@ export class EditDialog implements OnInit {
     this.dash.edit_question(this.questionId, this.fromPage);
     this.dialogRef.close();
   }
+
+}
+
+@Component({
+  selector: 'view-question',
+  templateUrl: 'view-question.html',
+
+})
+
+export class ViewQuestionDialog implements OnInit {
+  fromPage: Question;
+  questionId: string;
+
+  constructor(public dialogRef: MatDialogRef<EditDialog>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+    public dash: DashboardService) {
+
+    this.questionId = data.questionData.id
+    this.fromPage = {
+      uid: data.questionData.uid,
+      title: data.questionData.title,
+      body: data.questionData.body,
+      qid: data.questionData.qid,
+      author: data.questionData.author,
+      time: data.questionData.time,
+      userId: data.questionData.userId,
+      answers: data.questionData.answers
+    };
+    console.log(this.fromPage)
+  }
+  ngOnInit() { }
+
+  form: FormGroup = new FormGroup({
+    title: new FormControl(),
+    body: new FormControl(''),
+  });
+
+  // setQuestionData() {
+  //   console.log(this.form);
+  //   if (this.form.controls.title.touched && !this.form.controls.title.pristine) {
+  //     this.fromPage.title = this.form.value.title;
+  //   }
+  //   if (this.form.controls.body.touched && !this.form.controls.body.pristine) {
+  //     this.fromPage.body = this.form.value.body;
+  //   }
+  // }
+  // onSubmit() {
+  //   this.setQuestionData();
+  //   console.log(this.fromPage)
+  //   this.dash.edit_question(this.questionId, this.fromPage);
+  //   this.dialogRef.close();
+  // }
 
 }

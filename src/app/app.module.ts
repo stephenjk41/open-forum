@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //Components
 import { NavComponent, NewQuestionDialog, LoginDialog } from './components/nav/nav.component';
 import { LoginRegisterComponent } from './components/login-register/login-register.component';
-import { UserDashComponent, EditDialog, EditProfile } from './components/user-dash/user-dash.component';
+import { UserDashComponent, EditDialog, EditProfile, ViewQuestionDialog } from './components/user-dash/user-dash.component';
 import { TrendingComponent, ErrorComponent } from './components/trending/trending.component';
 
 
@@ -28,6 +28,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDividerModule } from '@angular/material/divider';
 
 //Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -52,7 +55,8 @@ import { environment } from '../environments/environment';
     EditDialog,
     ErrorComponent,
     EditProfile,
-    LoginDialog
+    LoginDialog,
+    ViewQuestionDialog
 
   ],
   imports: [
@@ -79,7 +83,10 @@ import { environment } from '../environments/environment';
     MatTableModule,
     MatExpansionModule,
     MatGridListModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDividerModule
 
   ],
   providers: [
@@ -87,6 +94,6 @@ import { environment } from '../environments/environment';
     { provide: MatDialogRef, useValue: {} }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [NewQuestionDialog, EditDialog, ErrorComponent, EditProfile, LoginDialog]
+  entryComponents: [NewQuestionDialog, EditDialog, ErrorComponent, EditProfile, LoginDialog, ViewQuestionDialog]
 })
 export class AppModule { }

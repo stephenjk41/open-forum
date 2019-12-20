@@ -1,23 +1,32 @@
 <div *ngIf="auth.user$ | async as user">
-    <!-- <form [formGroup]="this.form" class="normal-form" style="width: 100%">
+    <form [formGroup]="this.form" class="normal-form" style="width: 100%">
         <mat-form-field style="width: 50%">
             <input formControlName="displayName" [(ngModel)]="displayName" matInput placeholder="Username"
                 value="{{user.displayName}}">
         </mat-form-field>
         <br>
         <mat-form-field style="width: 50%">
-            <input formControlName="firstName" [(ngModel)]="firstName" matInput placeholder="First Name">
+            <input formControlName="fname" [(ngModel)]="fname" matInput placeholder="First Name" value="{{user.fname}}">
         </mat-form-field>
         <br>
         <mat-form-field style="width: 50%">
-            <input formControlName="title" [(ngModel)]="title" matInput placeholder="Question Title">
+            <input formControlName="lname" [(ngModel)]="lname" matInput placeholder="Last Name" value="{{user.lname}}">
         </mat-form-field>
         <br>
         <mat-form-field style="width: 50%">
-            <input formControlName="title" [(ngModel)]="title" matInput placeholder="Question Title">
+            <!-- <input formControlName="dob" [(ngModel)]="dob" matInput placeholder="Date of Birth" value="{{user.dob}}"> -->
+            <input formControlName="dob" [(ngModel)]="dob" matInput [matDatepicker]="picker" placeholder="Date of Birth"
+                value="{{user.dob}}">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field style="width: 50%">
+            <input formControlName="email" [(ngModel)]="email" matInput placeholder="E-Mail" value="{{user.email}}">
         </mat-form-field>
         <br>
-        <button mat-raised-button color="primary" type="submit" (click)="postAnswer(question)"
+        <button mat-raised-button color="primary" type="submit" (click)="editUser()"
             style="margin: 0; width: 20%;">Post</button>
-    </form> -->
+    </form>
 </div>

@@ -32,6 +32,8 @@
             <input type="text" class="form-control mb-2" placeholder="Email" required autofocus>
             <input type="password" class="form-control mb-2" placeholder="Password" required>
             <button class="btn btn-lg btn-primary btn-block mb-1" type="submit" (click)="auth.login()">Login</button>
+            <button mat-raised-button color="primary" (click)="gsignIn()">Login with
+                Google</button>
             <button class="btn btn-lg btn-primary btn-block mb-1" (click)="gsignIn()">Login with
                 Google</button>
         </form>

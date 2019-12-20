@@ -18,11 +18,11 @@ import { IUser } from './user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  user$: Observable<any>;
+
   dashOpen = false;
   loginOpen = false;
   public signedIn = false;
-
+  user$: Observable<any>;
   public user: IUser = {
     uid: "",
     email: "",
@@ -36,12 +36,12 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          this.signedIn = true;
-          this.user$.subscribe(user => {
-            this.user.displayName = user.displayName;
-            this.user.uid = user.uid;
-            this.user.email = user.email;
-          })
+          // this.signedIn = true;
+          // this.user$.subscribe(user => {
+          //   this.user.displayName = user.displayName;
+          //   this.user.uid = user.uid;
+          //   this.user.email = user.email;
+          // })
           return this.afs.doc<IUser>(`users/${user.uid}`).valueChanges();
         } else {
           this.signedIn = false;
@@ -97,6 +97,10 @@ export class AuthService {
       displayName: user.displayName,
     };
     return userRef.set(data, { merge: true });
+  }
+
+  edit_user(user: IUser) {
+    this.afs.collection(`users`).doc(user.uid).update(user);
   }
 
   public getUserData(): any {
