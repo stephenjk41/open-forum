@@ -87,7 +87,7 @@ var __values = (this && this.__values) || function (o) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<!-- <div class=\"container pt-3\">\r\n    <div class=\"row justify-content-sm-center\">\r\n        <div class=\"col-sm-10 col-md-6\">\r\n            <div class=\"card border-info\">\r\n                <div class=\"card-header\">Login</div>\r\n                <div class=\"card-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-4 text-center\">\r\n                            <img src=\"https://placeimg.com/128/128/nature\">\r\n                        </div>\r\n                        <div class=\"col-md-8\">\r\n                            <form>\r\n                                <input type=\"text\" class=\"form-control mb-2\" placeholder=\"Email\" required autofocus>\r\n                                <input type=\"password\" class=\"form-control mb-2\" placeholder=\"Password\" required>\r\n                                <button class=\"btn btn-lg btn-primary btn-block mb-1\" type=\"submit\"\r\n                                    (click)=\"auth.login()\">Login</button>\r\n                                <button class=\"btn btn-lg btn-primary btn-block mb-1\" (click)=\"gsignIn()\">Login with\r\n                                    Google</button>\r\n                            </form>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div> -->\r\n\r\n<mat-tab-group>\r\n    <mat-tab label=\"Login\">\r\n        <h1>Login</h1>\r\n        <form>\r\n            <input type=\"text\" class=\"form-control mb-2\" placeholder=\"Email\" required autofocus>\r\n            <input type=\"password\" class=\"form-control mb-2\" placeholder=\"Password\" required>\r\n            <button class=\"btn btn-lg btn-primary btn-block mb-1\" type=\"submit\" (click)=\"auth.login()\">Login</button>\r\n            <button class=\"btn btn-lg btn-primary btn-block mb-1\" (click)=\"gsignIn()\">Login with\r\n                Google</button>\r\n        </form>\r\n    </mat-tab>\r\n    <mat-tab label=\"Register\">\r\n        <h1>Some more tab content</h1>\r\n        <p>...</p>\r\n    </mat-tab>\r\n</mat-tab-group>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<!-- <div class=\"container pt-3\">\r\n    <div class=\"row justify-content-sm-center\">\r\n        <div class=\"col-sm-10 col-md-6\">\r\n            <div class=\"card border-info\">\r\n                <div class=\"card-header\">Login</div>\r\n                <div class=\"card-body\">\r\n                    <div class=\"row\">\r\n                        <div class=\"col-md-4 text-center\">\r\n                            <img src=\"https://placeimg.com/128/128/nature\">\r\n                        </div>\r\n                        <div class=\"col-md-8\">\r\n                            <form>\r\n                                <input type=\"text\" class=\"form-control mb-2\" placeholder=\"Email\" required autofocus>\r\n                                <input type=\"password\" class=\"form-control mb-2\" placeholder=\"Password\" required>\r\n                                <button class=\"btn btn-lg btn-primary btn-block mb-1\" type=\"submit\"\r\n                                    (click)=\"auth.login()\">Login</button>\r\n                                <button class=\"btn btn-lg btn-primary btn-block mb-1\" (click)=\"gsignIn()\">Login with\r\n                                    Google</button>\r\n                            </form>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div> -->\r\n\r\n<mat-tab-group>\r\n    <mat-tab label=\"Login\">\r\n        <h1>Login</h1>\r\n        <form>\r\n            <input type=\"text\" class=\"form-control mb-2\" placeholder=\"Email\" required autofocus>\r\n            <input type=\"password\" class=\"form-control mb-2\" placeholder=\"Password\" required>\r\n            <button class=\"btn btn-lg btn-primary btn-block mb-1\" type=\"submit\" (click)=\"auth.login()\">Login</button>\r\n            <button mat-raised-button color=\"primary\" (click)=\"gsignIn()\">Login with\r\n                Google</button>\r\n            <button class=\"btn btn-lg btn-primary btn-block mb-1\" (click)=\"gsignIn()\">Login with\r\n                Google</button>\r\n        </form>\r\n    </mat-tab>\r\n    <mat-tab label=\"Register\">\r\n        <h1>Some more tab content</h1>\r\n        <p>...</p>\r\n    </mat-tab>\r\n</mat-tab-group>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/nav/nav.component.html": 
@@ -98,7 +98,7 @@ var __values = (this && this.__values) || function (o) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<mat-sidenav-container class=\"sidenav-container\">\r\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\r\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\" [opened]=\"(isHandset$ | async) === false\">\r\n    <mat-toolbar>Menu</mat-toolbar>\r\n    <mat-nav-list>\r\n      <div *ngIf=\"auth.user$ | async as user; else login\">\r\n        <a mat-list-item (click)=\"goHome()\">Home</a>\r\n        <a mat-list-item (click)=\"goDashboard()\">Dashboard</a>\r\n        <a mat-list-item (click)=\"openNewQuestionDialog()\">New Question</a>\r\n        <hr>\r\n        <a mat-list-item (click)=\"auth.signOut()\">Sign Out</a>\r\n      </div>\r\n      <ng-template #login>\r\n        <a mat-list-item (click)=\"openLoginDialog()\">Login</a>\r\n      </ng-template>\r\n    </mat-nav-list>\r\n  </mat-sidenav>\r\n  <mat-sidenav-content>\r\n    <mat-toolbar color=\"primary\">\r\n      <span class=\"gap\">Open Forum</span>\r\n      <span class=\"filler\"></span>\r\n      <div *ngIf=\" auth.user$ | async as user; else name\">\r\n        <span style=\"margin: auto;\">\r\n          {{user.displayName}}\r\n          <i class=\"material-icons \" style=\"margin: auto;\">account_circle</i>\r\n        </span>\r\n      </div>\r\n      <ng-template #name></ng-template>\r\n    </mat-toolbar>\r\n    <!-- Add Content Here -->\r\n\r\n    <div *ngIf=\"auth.dashOpen && auth.user$; else home\">\r\n      <app-user-dash></app-user-dash>\r\n    </div>\r\n    <ng-template #home>\r\n      <app-trending></app-trending>\r\n    </ng-template>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<mat-sidenav-container class=\"sidenav-container\">\r\n  <mat-sidenav #drawer class=\"sidenav\" fixedInViewport [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\r\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\" [opened]=\"(isHandset$ | async) === false\">\r\n    <mat-toolbar>Menu</mat-toolbar>\r\n    <mat-nav-list>\r\n      <div *ngIf=\"auth.user$ | async as user; else login\">\r\n        <a mat-list-item (click)=\"goHome()\">Home</a>\r\n        <a mat-list-item (click)=\"goDashboard()\">Dashboard</a>\r\n        <a mat-list-item (click)=\"openNewQuestionDialog()\">New Question</a>\r\n        <hr>\r\n        <a mat-list-item (click)=\"auth.signOut()\">Sign Out</a>\r\n      </div>\r\n      <ng-template #login>\r\n        <a mat-list-item (click)=\"auth.googleSignin()\">Login</a>\r\n      </ng-template>\r\n    </mat-nav-list>\r\n  </mat-sidenav>\r\n  <mat-sidenav-content>\r\n    <mat-toolbar color=\"primary\">\r\n      <span class=\"gap\">Open Forum</span>\r\n      <span class=\"filler\"></span>\r\n      <div *ngIf=\" auth.user$ | async as user; else name\">\r\n        <span style=\"margin: auto;\">\r\n          {{user.displayName}}\r\n          <i class=\"material-icons \" style=\"margin: auto;\">account_circle</i>\r\n        </span>\r\n      </div>\r\n      <ng-template #name></ng-template>\r\n    </mat-toolbar>\r\n    <!-- <app-trending></app-trending> -->\r\n    <!-- Add Content Here -->\r\n    <ng-container *ngIf=\"auth.dashOpen && auth.user$; else home\">\r\n      <app-user-dash></app-user-dash>\r\n    </ng-container>\r\n    <ng-template #home>\r\n      <app-trending></app-trending>\r\n    </ng-template>\r\n    <!-- <div *ngIf=\"auth.dashOpen && auth.user$; else home\">\r\n      <app-user-dash></app-user-dash>\r\n    </div>\r\n    -->\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/nav/new-question.html": 
@@ -131,7 +131,7 @@ var __values = (this && this.__values) || function (o) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div>\r\n\r\n    <mat-accordion class=\"example-headers-align\">\r\n        <mat-expansion-panel\r\n            *ngFor=\"let question of answerService.questions$ | async as questions; let i = index; last as isLast; first as isFirst\"\r\n            [expanded]=\"step === i\" (opened)=\"setStep(i)\" hideToggle>\r\n            <mat-expansion-panel-header class=\"right-aligned-header\" [ngStyle]=\"{'background-color':'lightgrey'}\">\r\n                <mat-panel-title>\r\n                    <strong>{{question.title}}</strong>\r\n\r\n                </mat-panel-title>\r\n                <mat-panel-description>\r\n                    <span>{{question.author}}</span>\r\n\r\n                </mat-panel-description>\r\n            </mat-expansion-panel-header>\r\n\r\n            <hr>\r\n            <p>{{question.body}}</p>\r\n            <hr>\r\n            <mat-action-row>\r\n\r\n                <ng-container *ngIf=\"didntPost(question); else alreadyPosted\">\r\n                    <h4 style=\"margin: 2%;\">Answer </h4>\r\n                    <form [formGroup]=\"this.form\" class=\"normal-form\" style=\"width: 100%\">\r\n                        <mat-form-field style=\"width: 90%\">\r\n                            <input formControlName=\"answer\" [(ngModel)]=\"answer\" matInput placeholder=\"Answer\">\r\n                        </mat-form-field>\r\n                        <br>\r\n                        <button mat-raised-button color=\"primary\" type=\"submit\" (click)=\"postAnswer(question)\"\r\n                            style=\"margin: 0; width: 20%;\">Post</button>\r\n                    </form>\r\n                </ng-container>\r\n                <ng-template #alreadyPosted>\r\n                    <p>You already posted an answer</p>\r\n                </ng-template>\r\n                <ng-container *ngIf=\"isFirst && !isLast\">\r\n                    <button mat-button color=\"primary\" (click)=\"nextStep()\">Next</button>\r\n                </ng-container>\r\n\r\n                <ng-container *ngIf=\"isLast && !isFirst\">\r\n                    <button mat-button color=\"warn\" (click)=\"prevStep()\">Previous</button>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"!isFirst && !isLast\">\r\n                    <button mat-button color=\"warn\" (click)=\"prevStep()\">Previous</button>\r\n                    <button mat-button color=\"primary\" (click)=\"nextStep()\">Next</button>\r\n                </ng-container>\r\n\r\n\r\n            </mat-action-row>\r\n            <mat-list role=\"list\">\r\n                <mat-list-item role=\"listitem\" *ngFor=\"let answer of question.answers\">\r\n                    <mat-divider></mat-divider>\r\n                    <h3 matLine>{{answer.answer}}</h3>\r\n                    <p matLine>\r\n                        Posted by: {{answer.author}}\r\n                    </p>\r\n                    <p matLine>\r\n                        <ng-container *ngIf=\"voteDown(answer) && !voteUp(answer)\">\r\n                            <button mat-button style=\"margin: 2px; float:right\" (click)=\"downvote(answer)\">\r\n                                {{answer.downvote}}\r\n                                <mat-icon mat-list-icon [ngStyle]=\"{'color':'orange'}\">arrow_downward</mat-icon>\r\n                            </button>\r\n                            <button mat-button style=\"margin: 2px; float: right;\" (click)=\"upvote(answer)\">\r\n                                {{answer.upvote}}\r\n                                <mat-icon mat-list-icon>\r\n                                    arrow_upward</mat-icon>\r\n                                <ng-template #noVote>\r\n                                    <mat-icon mat-list-icon>arrow_upward</mat-icon>\r\n                                </ng-template>\r\n                            </button>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngIf=\"voteUp(answer) && !voteDown(answer)\">\r\n                            <button mat-button style=\"margin: 2px; float:right\" (click)=\"downvote(answer)\">\r\n                                {{answer.downvote}}\r\n                                <mat-icon mat-list-icon>arrow_downward</mat-icon>\r\n                            </button>\r\n                            <button mat-button style=\"margin: 2px; float: right;\" (click)=\"upvote(answer)\">\r\n                                {{answer.upvote}}\r\n                                <mat-icon mat-list-icon [ngStyle]=\"{'color':'orange'}\">\r\n                                    arrow_upward</mat-icon>\r\n\r\n                            </button>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngIf=\"!voteUp(answer) && !voteDown(answer)\">\r\n                            <button mat-button style=\"margin: 2px; float:right\" (click)=\"downvote(answer)\">\r\n                                {{answer.downvote}}\r\n                                <mat-icon mat-list-icon>arrow_downward</mat-icon>\r\n                            </button>\r\n                            <button mat-button style=\"margin: 2px; float: right;\" (click)=\"upvote(answer)\">\r\n                                {{answer.upvote}}\r\n                                <mat-icon mat-list-icon>\r\n                                    arrow_upward</mat-icon>\r\n\r\n                            </button>\r\n                        </ng-container>\r\n\r\n                    </p>\r\n                </mat-list-item>\r\n            </mat-list>\r\n        </mat-expansion-panel>\r\n    </mat-accordion>\r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div>\r\n    <mat-accordion class=\"example-headers-align\">\r\n        <mat-expansion-panel\r\n            *ngFor=\"let question of answerService.questions$ | async as questions; let i = index; last as isLast; first as isFirst\"\r\n            [expanded]=\"step === i\" (opened)=\"setStep(i)\" hideToggle>\r\n            <mat-expansion-panel-header class=\"right-aligned-header\" [ngStyle]=\"{'background-color':'lightgrey'}\">\r\n                <mat-panel-title>\r\n                    <strong>{{question.title}}</strong>\r\n\r\n                </mat-panel-title>\r\n                <mat-panel-description>\r\n                    <span>{{question.author}}</span>\r\n\r\n                </mat-panel-description>\r\n            </mat-expansion-panel-header>\r\n\r\n            <hr>\r\n            <p>{{question.body}}</p>\r\n            <hr>\r\n            <mat-action-row>\r\n\r\n                <ng-container *ngIf=\"didntPost(question); else alreadyPosted\">\r\n                    <h4 style=\"margin: 2%;\">Answer </h4>\r\n                    <form [formGroup]=\"this.form\" class=\"normal-form\" style=\"width: 100%\">\r\n                        <mat-form-field style=\"width: 90%\">\r\n                            <input formControlName=\"answer\" [(ngModel)]=\"answer\" matInput placeholder=\"Answer\">\r\n                        </mat-form-field>\r\n                        <br>\r\n                        <button mat-raised-button color=\"primary\" type=\"submit\" (click)=\"postAnswer(question)\"\r\n                            style=\"margin: 0; width: 20%;\">Post</button>\r\n                    </form>\r\n                </ng-container>\r\n                <ng-template #alreadyPosted>\r\n                    <p>You already posted an answer</p>\r\n                </ng-template>\r\n                <ng-container *ngIf=\"isFirst && !isLast\">\r\n                    <button mat-button color=\"primary\" (click)=\"nextStep()\">Next</button>\r\n                </ng-container>\r\n\r\n                <ng-container *ngIf=\"isLast && !isFirst\">\r\n                    <button mat-button color=\"warn\" (click)=\"prevStep()\">Previous</button>\r\n                </ng-container>\r\n                <ng-container *ngIf=\"!isFirst && !isLast\">\r\n                    <button mat-button color=\"warn\" (click)=\"prevStep()\">Previous</button>\r\n                    <button mat-button color=\"primary\" (click)=\"nextStep()\">Next</button>\r\n                </ng-container>\r\n\r\n\r\n            </mat-action-row>\r\n            <mat-list role=\"list\">\r\n                <mat-list-item role=\"listitem\" *ngFor=\"let answer of question.answers\">\r\n                    <mat-divider></mat-divider>\r\n                    <h3 matLine>{{answer.answer}}</h3>\r\n                    <p matLine>\r\n                        Posted by: {{answer.author}}\r\n                    </p>\r\n                    <p matLine>\r\n                        <ng-container *ngIf=\"voteDown(answer) && !voteUp(answer)\">\r\n                            <button mat-button style=\"margin: 2px; float:right\" (click)=\"downvote(answer)\">\r\n                                {{answer.downvote}}\r\n                                <mat-icon mat-list-icon [ngStyle]=\"{'color':'orange'}\">arrow_downward</mat-icon>\r\n                            </button>\r\n                            <button mat-button style=\"margin: 2px; float: right;\" (click)=\"upvote(answer)\">\r\n                                {{answer.upvote}}\r\n                                <mat-icon mat-list-icon>\r\n                                    arrow_upward</mat-icon>\r\n                                <ng-template #noVote>\r\n                                    <mat-icon mat-list-icon>arrow_upward</mat-icon>\r\n                                </ng-template>\r\n                            </button>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngIf=\"voteUp(answer) && !voteDown(answer)\">\r\n                            <button mat-button style=\"margin: 2px; float:right\" (click)=\"downvote(answer)\">\r\n                                {{answer.downvote}}\r\n                                <mat-icon mat-list-icon>arrow_downward</mat-icon>\r\n                            </button>\r\n                            <button mat-button style=\"margin: 2px; float: right;\" (click)=\"upvote(answer)\">\r\n                                {{answer.upvote}}\r\n                                <mat-icon mat-list-icon [ngStyle]=\"{'color':'orange'}\">\r\n                                    arrow_upward</mat-icon>\r\n\r\n                            </button>\r\n                        </ng-container>\r\n\r\n                        <ng-container *ngIf=\"!voteUp(answer) && !voteDown(answer)\">\r\n                            <button mat-button style=\"margin: 2px; float:right\" (click)=\"downvote(answer)\">\r\n                                {{answer.downvote}}\r\n                                <mat-icon mat-list-icon>arrow_downward</mat-icon>\r\n                            </button>\r\n                            <button mat-button style=\"margin: 2px; float: right;\" (click)=\"upvote(answer)\">\r\n                                {{answer.upvote}}\r\n                                <mat-icon mat-list-icon>\r\n                                    arrow_upward</mat-icon>\r\n\r\n                            </button>\r\n                        </ng-container>\r\n\r\n                    </p>\r\n                </mat-list-item>\r\n            </mat-list>\r\n        </mat-expansion-panel>\r\n    </mat-accordion>\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-dash/edit-profile.html": 
@@ -142,7 +142,7 @@ var __values = (this && this.__values) || function (o) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"auth.user$ | async as user\">\r\n    <!-- <form [formGroup]=\"this.form\" class=\"normal-form\" style=\"width: 100%\">\r\n        <mat-form-field style=\"width: 50%\">\r\n            <input formControlName=\"displayName\" [(ngModel)]=\"displayName\" matInput placeholder=\"Username\"\r\n                value=\"{{user.displayName}}\">\r\n        </mat-form-field>\r\n        <br>\r\n        <mat-form-field style=\"width: 50%\">\r\n            <input formControlName=\"firstName\" [(ngModel)]=\"firstName\" matInput placeholder=\"First Name\">\r\n        </mat-form-field>\r\n        <br>\r\n        <mat-form-field style=\"width: 50%\">\r\n            <input formControlName=\"title\" [(ngModel)]=\"title\" matInput placeholder=\"Question Title\">\r\n        </mat-form-field>\r\n        <br>\r\n        <mat-form-field style=\"width: 50%\">\r\n            <input formControlName=\"title\" [(ngModel)]=\"title\" matInput placeholder=\"Question Title\">\r\n        </mat-form-field>\r\n        <br>\r\n        <button mat-raised-button color=\"primary\" type=\"submit\" (click)=\"postAnswer(question)\"\r\n            style=\"margin: 0; width: 20%;\">Post</button>\r\n    </form> -->\r\n</div>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"auth.user$ | async as user\">\r\n    <form [formGroup]=\"this.form\" class=\"normal-form\" style=\"width: 100%\">\r\n        <mat-form-field style=\"width: 50%\">\r\n            <input formControlName=\"displayName\" [(ngModel)]=\"displayName\" matInput placeholder=\"Username\"\r\n                value=\"{{user.displayName}}\">\r\n        </mat-form-field>\r\n        <br>\r\n        <mat-form-field style=\"width: 50%\">\r\n            <input formControlName=\"fname\" [(ngModel)]=\"fname\" matInput placeholder=\"First Name\" value=\"{{user.fname}}\">\r\n        </mat-form-field>\r\n        <br>\r\n        <mat-form-field style=\"width: 50%\">\r\n            <input formControlName=\"lname\" [(ngModel)]=\"lname\" matInput placeholder=\"Last Name\" value=\"{{user.lname}}\">\r\n        </mat-form-field>\r\n        <br>\r\n        <mat-form-field style=\"width: 50%\">\r\n            <!-- <input formControlName=\"dob\" [(ngModel)]=\"dob\" matInput placeholder=\"Date of Birth\" value=\"{{user.dob}}\"> -->\r\n            <input formControlName=\"dob\" [(ngModel)]=\"dob\" matInput [matDatepicker]=\"picker\" placeholder=\"Date of Birth\"\r\n                value=\"{{user.dob}}\">\r\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n            <mat-datepicker #picker></mat-datepicker>\r\n        </mat-form-field>\r\n\r\n        <br>\r\n        <mat-form-field style=\"width: 50%\">\r\n            <input formControlName=\"email\" [(ngModel)]=\"email\" matInput placeholder=\"E-Mail\" value=\"{{user.email}}\">\r\n        </mat-form-field>\r\n        <br>\r\n        <button mat-raised-button color=\"primary\" type=\"submit\" (click)=\"editUser()\"\r\n            style=\"margin: 0; width: 20%;\">Post</button>\r\n    </form>\r\n</div>");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-dash/edit.html": 
@@ -164,7 +164,18 @@ var __values = (this && this.__values) || function (o) {
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"auth.user$ | async as user\">\r\n    <mat-grid-list style=\"background: white;\" cols=\"9\" rowHeight=\"1.5:1\">\r\n        <mat-grid-tile colspan=\"1\">\r\n            <h1>{{user.displayName}}</h1>\r\n        </mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile colspan=\"2\">\r\n            <button mat-raised-button color=\"primary\" (click)=\"openEditProfile(dash.user$)\">Edit Profile</button>\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n</div>\r\n<mat-list role=\"list\">\r\n    <mat-list-item role=\"listitem\" *ngFor=\"let question of dash.questions$ | async\">\r\n        <button mat-button [matMenuTriggerFor]=\"menu\">\r\n            <mat-icon mat-list-icon>reorder</mat-icon>\r\n        </button>\r\n        <mat-menu #menu=\"matMenu\">\r\n            <button mat-menu-item (click)=\"openEditDialog(question)\">Edit</button>\r\n            <button mat-menu-item (click)=\"deleteQuestion(question.id)\">Delete</button>\r\n            <button mat-menu-item (click)=\"viewMore(question)\">More</button>\r\n        </mat-menu>\r\n\r\n        <mat-icon mat-list-icon>question_answer</mat-icon>\r\n        <h4 mat-line>{{question.title}}</h4>\r\n        <p mat-line>{{question.body}}</p>\r\n    </mat-list-item>\r\n</mat-list>\r\n\r\n<ng-template #main>\r\n    <app-trending></app-trending>\r\n</ng-template>");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"auth.user$ | async as user\">\r\n    <mat-grid-list style=\"background: white;\" cols=\"9\" rowHeight=\"1.5:1\">\r\n        <mat-grid-tile colspan=\"1\">\r\n            <h1>{{user.displayName}}</h1>\r\n        </mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile></mat-grid-tile>\r\n        <mat-grid-tile colspan=\"2\">\r\n            <button mat-raised-button color=\"primary\" (click)=\"openEditProfile(dash.user$)\">Edit Profile</button>\r\n        </mat-grid-tile>\r\n    </mat-grid-list>\r\n</div>\r\n<mat-list role=\"list\">\r\n    <mat-list-item role=\"listitem\" *ngFor=\"let question of dash.questions$ | async\">\r\n        <button mat-button [matMenuTriggerFor]=\"menu\">\r\n            <mat-icon mat-list-icon>reorder</mat-icon>\r\n        </button>\r\n        <mat-menu #menu=\"matMenu\">\r\n            <button mat-menu-item (click)=\"openEditDialog(question)\">Edit</button>\r\n            <button mat-menu-item (click)=\"deleteQuestion(question.id)\">Delete</button>\r\n            <button mat-menu-item (click)=\"openViewDialog(question)\">More</button>\r\n        </mat-menu>\r\n\r\n        <mat-icon mat-list-icon>question_answer</mat-icon>\r\n        <h4 mat-line>{{question.title}}</h4>\r\n        <p mat-line>{{question.body}}</p>\r\n    </mat-list-item>\r\n</mat-list>\r\n\r\n<ng-template #main>\r\n    <app-trending></app-trending>\r\n</ng-template>");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-dash/view-question.html": 
+        /*!***********************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-dash/view-question.html ***!
+          \***********************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<!-- <pre>\r\n    {{fromPage | json}}\r\n</pre> -->\r\n<ng-container>\r\n    <mat-tab-group>\r\n        <mat-tab label=\"Question Info\">\r\n            <h3>{{fromPage.title}}</h3>\r\n            <p>{{fromPage.body}}</p>\r\n            <p>{{fromPage.time | date:'medium' }}</p>\r\n        </mat-tab>\r\n        <mat-tab label=\"Answers\">\r\n            <mat-list>\r\n                <mat-list-item *ngFor=\"let answer of fromPage.answers\">\r\n                    <h3 matLine> {{answer.answer}} </h3>\r\n                    <p matLine> {{answer.author}} </p>\r\n                    <p matLine class=\"demo-2\">\r\n                        <ng-container>\r\n                            {{answer.upvote}}\r\n                            <mat-icon mat-list-icon>arrow_upward</mat-icon>\r\n                        </ng-container>\r\n                        <ng-container>\r\n                            {{answer.downvote}}\r\n                            <mat-icon mat-list-icon>arrow_downward</mat-icon>\r\n                        </ng-container>\r\n\r\n                    </p>\r\n                </mat-list-item>\r\n                <mat-divider></mat-divider>\r\n            </mat-list>\r\n        </mat-tab>\r\n    </mat-tab-group>\r\n</ng-container>");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -569,11 +580,14 @@ var __values = (this && this.__values) || function (o) {
             /* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/expansion */ "./node_modules/@angular/material/esm2015/expansion.js");
             /* harmony import */ var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material/grid-list */ "./node_modules/@angular/material/esm2015/grid-list.js");
             /* harmony import */ var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material/tabs */ "./node_modules/@angular/material/esm2015/tabs.js");
-            /* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
-            /* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
-            /* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/es2015/index.js");
-            /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
-            /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+            /* harmony import */ var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/material/datepicker */ "./node_modules/@angular/material/esm2015/datepicker.js");
+            /* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/esm2015/core.js");
+            /* harmony import */ var _angular_material_divider__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @angular/material/divider */ "./node_modules/@angular/material/esm2015/divider.js");
+            /* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
+            /* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+            /* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/es2015/index.js");
+            /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
+            /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
             //Components
             //Material
             //Firebase
@@ -594,15 +608,16 @@ var __values = (this && this.__values) || function (o) {
                         _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["EditDialog"],
                         _components_trending_trending_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"],
                         _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["EditProfile"],
-                        _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["LoginDialog"]
+                        _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["LoginDialog"],
+                        _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["ViewQuestionDialog"]
                     ],
                     imports: [
                         _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                         _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
-                        _angular_fire__WEBPACK_IMPORTED_MODULE_26__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_30__["environment"].firebaseConfig),
-                        _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_27__["AngularFirestoreModule"],
-                        _angular_fire_auth__WEBPACK_IMPORTED_MODULE_29__["AngularFireAuthModule"],
-                        _angular_fire_storage__WEBPACK_IMPORTED_MODULE_28__["AngularFireStorageModule"],
+                        _angular_fire__WEBPACK_IMPORTED_MODULE_29__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_33__["environment"].firebaseConfig),
+                        _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_30__["AngularFirestoreModule"],
+                        _angular_fire_auth__WEBPACK_IMPORTED_MODULE_32__["AngularFireAuthModule"],
+                        _angular_fire_storage__WEBPACK_IMPORTED_MODULE_31__["AngularFireStorageModule"],
                         _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_16__["BrowserAnimationsModule"],
                         _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_17__["LayoutModule"],
                         _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_11__["MatToolbarModule"],
@@ -620,14 +635,17 @@ var __values = (this && this.__values) || function (o) {
                         _angular_material_table__WEBPACK_IMPORTED_MODULE_22__["MatTableModule"],
                         _angular_material_expansion__WEBPACK_IMPORTED_MODULE_23__["MatExpansionModule"],
                         _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_24__["MatGridListModule"],
-                        _angular_material_tabs__WEBPACK_IMPORTED_MODULE_25__["MatTabsModule"]
+                        _angular_material_tabs__WEBPACK_IMPORTED_MODULE_25__["MatTabsModule"],
+                        _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_26__["MatDatepickerModule"],
+                        _angular_material_core__WEBPACK_IMPORTED_MODULE_27__["MatNativeDateModule"],
+                        _angular_material_divider__WEBPACK_IMPORTED_MODULE_28__["MatDividerModule"]
                     ],
                     providers: [
                         { provide: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MAT_DIALOG_DATA"], useValue: {} },
                         { provide: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_10__["MatDialogRef"], useValue: {} }
                     ],
                     bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
-                    entryComponents: [_components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["NewQuestionDialog"], _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["EditDialog"], _components_trending_trending_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"], _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["EditProfile"], _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["LoginDialog"]]
+                    entryComponents: [_components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["NewQuestionDialog"], _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["EditDialog"], _components_trending_trending_component__WEBPACK_IMPORTED_MODULE_9__["ErrorComponent"], _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["EditProfile"], _components_nav_nav_component__WEBPACK_IMPORTED_MODULE_6__["LoginDialog"], _components_user_dash_user_dash_component__WEBPACK_IMPORTED_MODULE_8__["ViewQuestionDialog"]]
                 })
             ], AppModule);
             /***/ 
@@ -719,14 +737,6 @@ var __values = (this && this.__values) || function (o) {
                     };
                     this.isHandset$ = this.breakpointObserver.observe(_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_2__["Breakpoints"].Handset)
                         .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (result) { return result.matches; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["shareReplay"])());
-                    if (this.auth.user$) {
-                        this.userData = this.auth.user;
-                        // this.auth.user$.subscribe(user => {
-                        //   this.userData.uid = user.uid;
-                        //   this.userData.email = user.email;
-                        //   this.userData.displayName = user.displayName;
-                        // })
-                    }
                 }
                 NavComponent.prototype.ngOnInit = function () {
                 };
@@ -797,14 +807,7 @@ var __values = (this && this.__values) || function (o) {
                         body: new _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormControl"](''),
                     });
                 }
-                NewQuestionDialog.prototype.ngOnInit = function () {
-                    var _this = this;
-                    this.auth.user$.subscribe(function (user) {
-                        _this.userData.displayName = user.displayName;
-                        _this.userData.uid = user.uid;
-                        _this.userData.email = user.email;
-                    });
-                };
+                NewQuestionDialog.prototype.ngOnInit = function () { };
                 NewQuestionDialog.prototype.initializeFormGroup = function () {
                     this.form.setValue({
                         title: '',
@@ -879,19 +882,11 @@ var __values = (this && this.__values) || function (o) {
                         answer: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
                     });
                     this.step = 0;
-                    if (auth.user$) {
-                        this.userId = auth.user.uid;
-                        this.displayName = auth.user.displayName;
-                        console.log(this.userId);
-                    }
-                    // this.user$ = auth.getUserData().subscribe(user => {
-                    //   this.userId = user.uid;
-                    //   this.displayName = user.displayName;
-                    //   console.log(this.displayName)
-                    // })
                 }
                 TrendingComponent.prototype.ngOnInit = function () {
-                    // console.log(this.questions$);
+                    this.trending.questions$.subscribe(function (question) {
+                        console.log(question);
+                    });
                 };
                 TrendingComponent.prototype.postAnswer = function (question) {
                     if (this.form.controls.answer.touched && !this.form.controls.answer.pristine) {
@@ -1050,13 +1045,14 @@ var __values = (this && this.__values) || function (o) {
         /*!*************************************************************!*\
           !*** ./src/app/components/user-dash/user-dash.component.ts ***!
           \*************************************************************/
-        /*! exports provided: UserDashComponent, EditProfile, EditDialog */
+        /*! exports provided: UserDashComponent, EditProfile, EditDialog, ViewQuestionDialog */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserDashComponent", function () { return UserDashComponent; });
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditProfile", function () { return EditProfile; });
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditDialog", function () { return EditDialog; });
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewQuestionDialog", function () { return ViewQuestionDialog; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/auth.service */ "./src/app/services/auth.service.ts");
@@ -1078,7 +1074,6 @@ var __values = (this && this.__values) || function (o) {
                     };
                 }
                 UserDashComponent.prototype.ngOnInit = function () {
-                    this.questions = this.dash.getQuestionsList(this.auth.user);
                 };
                 UserDashComponent.prototype.deleteQuestion = function (questionId) {
                     console.log(questionId);
@@ -1100,6 +1095,16 @@ var __values = (this && this.__values) || function (o) {
                         width: "70%",
                     });
                 };
+                UserDashComponent.prototype.openViewDialog = function (question) {
+                    var dialogRef = this.dialog.open(ViewQuestionDialog, {
+                        width: "90%",
+                        data: { questionData: question }
+                    });
+                    // dialogRef.afterClosed().subscribe(result => {
+                    //   console.log('The dialog was closed', result);
+                    //   this.dialogValue = result.data;
+                    // });
+                };
                 return UserDashComponent;
             }());
             UserDashComponent.ctorParameters = function () { return [
@@ -1119,15 +1124,50 @@ var __values = (this && this.__values) || function (o) {
             ], UserDashComponent);
             var EditProfile = /** @class */ (function () {
                 function EditProfile(auth) {
+                    var _this = this;
                     this.auth = auth;
                     this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
                         displayName: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
                         dob: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
-                        firstName: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
-                        lastName: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
+                        fname: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
+                        lname: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
+                        email: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"]('')
+                    });
+                    this.auth.user$.subscribe(function (user) {
+                        _this.user = {
+                            uid: user.uid,
+                            displayName: user.displayName,
+                            email: user.email,
+                            fname: user.fname,
+                            lname: user.lname,
+                            dob: user.dob
+                        };
                     });
                 }
                 EditProfile.prototype.ngOnInit = function () { };
+                EditProfile.prototype.setUserData = function () {
+                    console.log(this.form);
+                    if (this.form.controls.displayName.touched && !this.form.controls.displayName.pristine) {
+                        this.user.displayName = this.form.value.displayName;
+                    }
+                    if (this.form.controls.dob.touched && !this.form.controls.dob.pristine) {
+                        this.user.dob = this.form.value.dob;
+                    }
+                    if (this.form.controls.fname.touched && !this.form.controls.fname.pristine) {
+                        this.user.fname = this.form.value.fname;
+                    }
+                    if (this.form.controls.lname.touched && !this.form.controls.lname.pristine) {
+                        this.user.lname = this.form.value.lname;
+                    }
+                    if (this.form.controls.email.touched && !this.form.controls.email.pristine) {
+                        this.user.email = this.form.value.email;
+                    }
+                };
+                EditProfile.prototype.editUser = function () {
+                    this.setUserData();
+                    console.log(this.user);
+                    this.auth.edit_user(this.user);
+                };
                 return EditProfile;
             }());
             EditProfile.ctorParameters = function () { return [
@@ -1191,6 +1231,43 @@ var __values = (this && this.__values) || function (o) {
                 }),
                 tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"])()), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_5__["MAT_DIALOG_DATA"]))
             ], EditDialog);
+            var ViewQuestionDialog = /** @class */ (function () {
+                function ViewQuestionDialog(dialogRef, data, dash) {
+                    this.dialogRef = dialogRef;
+                    this.data = data;
+                    this.dash = dash;
+                    this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"]({
+                        title: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](),
+                        body: new _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormControl"](''),
+                    });
+                    this.questionId = data.questionData.id;
+                    this.fromPage = {
+                        uid: data.questionData.uid,
+                        title: data.questionData.title,
+                        body: data.questionData.body,
+                        qid: data.questionData.qid,
+                        author: data.questionData.author,
+                        time: data.questionData.time,
+                        userId: data.questionData.userId,
+                        answers: data.questionData.answers
+                    };
+                    console.log(this.fromPage);
+                }
+                ViewQuestionDialog.prototype.ngOnInit = function () { };
+                return ViewQuestionDialog;
+            }());
+            ViewQuestionDialog.ctorParameters = function () { return [
+                { type: _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogRef"] },
+                { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_5__["MAT_DIALOG_DATA"],] }] },
+                { type: src_app_services_dashboard_service__WEBPACK_IMPORTED_MODULE_3__["DashboardService"] }
+            ]; };
+            ViewQuestionDialog = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'view-question',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./view-question.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/user-dash/view-question.html")).default,
+                }),
+                tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"])()), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_5__["MAT_DIALOG_DATA"]))
+            ], ViewQuestionDialog);
             /***/ 
         }),
         /***/ "./src/app/services/answer.service.ts": 
@@ -1208,11 +1285,17 @@ var __values = (this && this.__values) || function (o) {
             /* harmony import */ var _trending_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./trending.service */ "./src/app/services/trending.service.ts");
             /* harmony import */ var _collectionJoin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./collectionJoin */ "./src/app/services/collectionJoin.ts");
             /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+            /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
             var AnswerService = /** @class */ (function () {
-                function AnswerService(db, trending) {
-                    // this.getAnswersList();
+                function AnswerService(db, afAuth, trending) {
                     this.db = db;
+                    this.afAuth = afAuth;
                     this.trending = trending;
+                    this.user = {
+                        uid: "",
+                        email: "",
+                        displayName: ""
+                    };
                     this.questions$ = this.db
                         .collection('questions')
                         .valueChanges({ idField: 'id' })
@@ -1259,6 +1342,7 @@ var __values = (this && this.__values) || function (o) {
             }());
             AnswerService.ctorParameters = function () { return [
                 { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] },
+                { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_6__["AngularFireAuth"] },
                 { type: _trending_service__WEBPACK_IMPORTED_MODULE_3__["TrendingService"] }
             ]; };
             AnswerService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -1343,12 +1427,12 @@ var __values = (this && this.__values) || function (o) {
                     };
                     this.user$ = this.afAuth.authState.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["switchMap"])(function (user) {
                         if (user) {
-                            _this.signedIn = true;
-                            _this.user$.subscribe(function (user) {
-                                _this.user.displayName = user.displayName;
-                                _this.user.uid = user.uid;
-                                _this.user.email = user.email;
-                            });
+                            // this.signedIn = true;
+                            // this.user$.subscribe(user => {
+                            //   this.user.displayName = user.displayName;
+                            //   this.user.uid = user.uid;
+                            //   this.user.email = user.email;
+                            // })
                             return _this.afs.doc("users/" + user.uid).valueChanges();
                         }
                         else {
@@ -1449,6 +1533,9 @@ var __values = (this && this.__values) || function (o) {
                     };
                     return userRef.set(data, { merge: true });
                 };
+                AuthService.prototype.edit_user = function (user) {
+                    this.afs.collection("users").doc(user.uid).update(user);
+                };
                 AuthService.prototype.getUserData = function () {
                     return this.afAuth.authState;
                 };
@@ -1544,37 +1631,33 @@ var __values = (this && this.__values) || function (o) {
             /* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
             /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
             /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth.service */ "./src/app/services/auth.service.ts");
+            /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+            /* harmony import */ var _collectionJoin__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./collectionJoin */ "./src/app/services/collectionJoin.ts");
             var DashboardService = /** @class */ (function () {
                 function DashboardService(db, afAuth, auth) {
+                    var _this = this;
                     this.db = db;
                     this.afAuth = afAuth;
                     this.auth = auth;
                     this.questionsRef = null;
-                    this.cUser = {
+                    this.user = {
                         uid: "",
                         displayName: "",
                         email: ""
                     };
-                    console.log(this.auth.user$);
-                    if (this.auth.user$) {
-                        this.questions$ = this.getQuestionsList(this.auth.user);
-                        // this.auth.user$.subscribe(user => {
-                        // this.cUser.uid = user.uid;
-                        // this.cUser.email = user.email;
-                        // this.cUser.displayName = user.displayName;
-                        // console.log(this.auth.user)
-                        // this.questions$ = this.getQuestionsList(this.auth.user)
-                        // })
-                    }
-                }
-                DashboardService.prototype.getQuestionsList = function (user) {
-                    // console.log(this.userId)
-                    // if (!this.userId) return;
-                    this.questionsRef = this.db.collection("questions", function (ref) { return ref.where('userId', '==', user.uid); });
-                    this.questions$ = this.questionsRef.valueChanges({ idField: 'id' });
-                    this.questions$.subscribe(function (questions) {
-                        console.log(questions);
+                    this.auth.user$.subscribe(function (user) {
+                        _this.userId = user.uid;
+                        console.log(_this.userId);
+                        _this.questions$ = _this.db
+                            .collection('questions', function (ref) { return ref.where('userId', '==', _this.userId); })
+                            .valueChanges({ idField: 'id' })
+                            .pipe(Object(_collectionJoin__WEBPACK_IMPORTED_MODULE_6__["leftJoin"])(_this.db, 'qid', 'answers', 100), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["shareReplay"])(1));
+                        // this.getQuestionsList(this.userId);
                     });
+                }
+                DashboardService.prototype.getQuestionsList = function (userId) {
+                    this.questionsRef = this.db.collection("questions", function (ref) { return ref.where('userId', '==', userId); });
+                    this.questions$ = this.questionsRef.valueChanges({ idField: 'id' });
                     return this.questions$;
                 };
                 DashboardService.prototype.createQuestion = function (question) {
@@ -1612,15 +1695,21 @@ var __values = (this && this.__values) || function (o) {
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
-            /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth.service */ "./src/app/services/auth.service.ts");
-            /* harmony import */ var _dashboard_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dashboard.service */ "./src/app/services/dashboard.service.ts");
+            /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
+            /* harmony import */ var _auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth.service */ "./src/app/services/auth.service.ts");
+            /* harmony import */ var _dashboard_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dashboard.service */ "./src/app/services/dashboard.service.ts");
             var QuestionService = /** @class */ (function () {
-                function QuestionService(db, auth, dash) {
+                function QuestionService(db, auth, afAuth, dash) {
                     this.db = db;
                     this.auth = auth;
+                    this.afAuth = afAuth;
                     this.dash = dash;
+                    this.user = {
+                        uid: "",
+                        email: "",
+                        displayName: ""
+                    };
                     this.qRef = this.dash.questionsRef;
-                    this.user = this.auth.user$;
                 }
                 QuestionService.prototype.addQuestion = function (fbQuestion) {
                     this.question.push({
@@ -1651,8 +1740,9 @@ var __values = (this && this.__values) || function (o) {
             }());
             QuestionService.ctorParameters = function () { return [
                 { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__["AngularFirestore"] },
-                { type: _auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
-                { type: _dashboard_service__WEBPACK_IMPORTED_MODULE_4__["DashboardService"] }
+                { type: _auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
+                { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__["AngularFireAuth"] },
+                { type: _dashboard_service__WEBPACK_IMPORTED_MODULE_5__["DashboardService"] }
             ]; };
             QuestionService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -1676,6 +1766,11 @@ var __values = (this && this.__values) || function (o) {
             var TrendingService = /** @class */ (function () {
                 function TrendingService(db) {
                     this.db = db;
+                    this.user = {
+                        uid: "",
+                        email: "",
+                        displayName: ""
+                    };
                     this.questionsRef = null;
                     this.answerRef = null;
                     this.loginError = false;
